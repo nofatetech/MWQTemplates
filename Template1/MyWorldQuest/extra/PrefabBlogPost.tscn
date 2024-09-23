@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c1t5e28wihu84"]
+
+[node name="PrefabBlogPost" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Title" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Title"

@@ -1,0 +1,173 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr2leb1moknb4"]
+
+[ext_resource type="Script" path="res://extra/MWQ.gd" id="1_e57ht"]
+[ext_resource type="Script" path="res://templates/WorldTemplate1/WorldTemplate1.gd" id="1_yf5fr"]
+[ext_resource type="Texture2D" uid="uid://dbijln27tci8m" path="res://icon.svg" id="2_jdpny"]
+
+[node name="WorldTemplate1" type="Node2D" node_paths=PackedStringArray("containerPage", "mwq")]
+script = ExtResource("1_yf5fr")
+containerPage = NodePath("CanvasLayer/ContainerFull/ContainerMain/VBoxContainer/ContainerBody/HBoxContainer/ContainerPage/ColorRectPage")
+mwq = NodePath("MWQ")
+
+[node name="MWQ" type="Control" parent="." node_paths=PackedStringArray("username_label")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_e57ht")
+username_label = NodePath("../CanvasLayer/ContainerFull/ContainerMain/VBoxContainer/ContainerBody/HBoxContainer/ContainerSidebar1/VBoxContainer/LabelCurrentPlayer")
+world_name = "THis is a word with template1"
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(345, 497)
+texture = ExtResource("2_jdpny")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ContainerFull" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 1, 0, 1)
+
+[node name="ContainerMain" type="MarginContainer" parent="CanvasLayer/ContainerFull"]
+layout_mode = 2
+offset_right = 700.0
+offset_bottom = 700.0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 33
+theme_override_constants/margin_right = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ContainerFull/ContainerMain"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ContainerFull/ContainerMain/VBoxContainer"]
+custom_minimum_size = Vector2(0, 33)
+layout_mode = 2
+texture = ExtResource("2_jdpny")
+expand_mode = 2
+
+[node name="ContainerHeader" type="MarginContainer" parent="CanvasLayer/ContainerFull/ContainerMain/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label Title" type="Label" parent="CanvasLayer/ContainerFull/ContainerMain/VBoxContainer/ContainerHeader"]
+custom_minimum_size = Vector2(33, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0839378, 0.0807279, 0.0720576, 1)
+theme_override_font_sizes/font_size = 33
+text = "Welcome to MyWorld!! :)"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ContainerBody" type="MarginContainer" parent="CanvasLayer/ContainerFull/ContainerMain/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ContainerFull/ContainerMain/VBoxContainer/ContainerBody"]
+layout_mode = 2
+
+[node name="ContainerSidebar1" type="MarginContainer" parent="CanvasLayer/ContainerFull/ContainerMain/VBoxContainer/ContainerBody/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ContainerFull/ContainerMain/VBoxContainer/ContainerBody/HBoxContainer/ContainerSidebar1"]
+layout_mode = 2
+
+[node name="Button About Me" type="Button" parent="CanvasLayer/ContainerFull/ContainerMain/VBoxContainer/ContainerBody/HBoxContainer/ContainerSidebar1/VBoxContainer"]
+layout_mode = 2
+text = "About Me"
+
+[node name="TextEditToken" type="TextEdit" parent="CanvasLayer/ContainerFull/ContainerMain/VBoxContainer/ContainerBody/HBoxContainer/ContainerSidebar1/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+placeholder_text = "Your Token"
+
+[node name="ButtonLogin" type="Button" parent="CanvasLayer/ContainerFull/ContainerMain/VBoxContainer/ContainerBody/HBoxContainer/ContainerSidebar1/VBoxContainer"]
+layout_mode = 2
+text = "Identify yourself "
+
+[node name="LabelCurrentPlayer" type="Label" parent="CanvasLayer/ContainerFull/ContainerMain/VBoxContainer/ContainerBody/HBoxContainer/ContainerSidebar1/VBoxContainer"]
+custom_minimum_size = Vector2(33, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "who am i?"
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/ContainerFull/ContainerMain/VBoxContainer/ContainerBody/HBoxContainer/ContainerSidebar1/VBoxContainer"]
+custom_minimum_size = Vector2(33, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "About me
+
+Blog
+
+Projects
+
+Other Page
+
+Leave a Memory / Sign visitor"
+autowrap_mode = 2
+
+[node name="ContainerPage" type="MarginContainer" parent="CanvasLayer/ContainerFull/ContainerMain/VBoxContainer/ContainerBody/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="ColorRectPage" type="ColorRect" parent="CanvasLayer/ContainerFull/ContainerMain/VBoxContainer/ContainerBody/HBoxContainer/ContainerPage"]
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Label" type="Label" parent="CanvasLayer/ContainerFull/ContainerMain/VBoxContainer/ContainerBody/HBoxContainer/ContainerPage/ColorRectPage"]
+custom_minimum_size = Vector2(33, 0)
+layout_mode = 2
+offset_top = 130.0
+offset_right = 355.0
+offset_bottom = 153.0
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "body"
+autowrap_mode = 2
+
+[node name="ContainerSidebar2" type="MarginContainer" parent="CanvasLayer/ContainerFull/ContainerMain/VBoxContainer/ContainerBody/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/ContainerFull/ContainerMain/VBoxContainer/ContainerBody/HBoxContainer/ContainerSidebar2"]
+custom_minimum_size = Vector2(33, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "latest posts
+
+some quick game
+
+"
+autowrap_mode = 2
+
+[node name="ContainerFooter" type="ColorRect" parent="CanvasLayer/ContainerFull/ContainerMain/VBoxContainer"]
+custom_minimum_size = Vector2(0, 77)
+layout_mode = 2
+color = Color(0.10748, 0.10748, 0.10748, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/ContainerFull/ContainerMain/VBoxContainer/ContainerFooter"]
+custom_minimum_size = Vector2(33, 0)
+layout_mode = 2
+offset_right = 600.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.47788, 0.47788, 0.47788, 1)
+theme_override_font_sizes/font_size = 21
+text = "footer"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[connection signal="button_up" from="CanvasLayer/ContainerFull/ContainerMain/VBoxContainer/ContainerBody/HBoxContainer/ContainerSidebar1/VBoxContainer/Button About Me" to="." method="_on_button_about_me_button_up"]
+[connection signal="button_up" from="CanvasLayer/ContainerFull/ContainerMain/VBoxContainer/ContainerBody/HBoxContainer/ContainerSidebar1/VBoxContainer/ButtonLogin" to="." method="_on_button_login_button_up"]

@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbfeu88mhpo3n"]
+
+[ext_resource type="Script" path="res://templates/WorldTemplate1/pages/about_me.gd" id="1_7qjyt"]
+
+[node name="AboutMe" type="Node2D"]
+script = ExtResource("1_7qjyt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 529.0
+offset_bottom = 367.0
+color = Color(0.598504, 0.713351, 0.00288862, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 41.0
+offset_right = 460.0
+offset_bottom = 147.0
+theme_override_colors/font_color = Color(0, 0.854902, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 77
+text = "ABOUT ME"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 150.0
+offset_right = 542.0
+offset_bottom = 435.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "My name is [b]YOUR NAME[/b]. Welcome to my world.
+This is BBCode.
+
+[url=https://www.bbcode.org/]This is bbcode.org![/url]
+
+[url=https://www.google.com/]This is a link![/url]
+
+
+"
+fit_content = true

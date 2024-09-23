@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ppicptacdo5a"]
+
+[ext_resource type="Script" path="res://main1.gd" id="1_inxe2"]
+[ext_resource type="VideoStream" path="res://babyjatt.ogg" id="1_pchae"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_inxe2")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_right = 541.0
+offset_bottom = 298.0
+stream = ExtResource("1_pchae")
