@@ -22,7 +22,6 @@ func mwq_receive_player(player):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	mwq.x_identify()
-	mwq.x_change_page("res://templates/WorldTemplate1/pages/Home.tscn", containerPage)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,8 +29,8 @@ func _process(delta):
 	pass
 
 
-func _on_button_about_me_button_up() -> void:
-	mwq.x_change_page("res://templates/WorldTemplate1/pages/AboutMe.tscn", containerPage)
+#func _on_button_about_me_button_up() -> void:
+	#mwq.x_change_page("res://templates/WorldTemplate1/pages/AboutMe.tscn", containerPage)
 
 
 
@@ -80,12 +79,12 @@ func _on_button_about_me_button_up() -> void:
 	#
 
 
-func _on_button_idenify_button_up() -> void:
-	mwq.x_identify()
-	pass # Replace with function body.
+#func _on_button_idenify_button_up() -> void:
+	#mwq.x_identify()
+	#pass # Replace with function body.
 
 
-func _on_button_home_button_up() -> void:
-	#mwq.x_change_page("home.tscn")
-	mwq.x_change_page("res://templates/WorldTemplate1/pages/Home.tscn", containerPage)
-	pass # Replace with function body.
+#func _on_button_home_button_up() -> void:
+	##mwq.x_change_page("home.tscn")
+	#mwq.x_change_page("res://templates/WorldTemplate1/pages/Home.tscn", containerPage)
+	#pass # Replace with function body.

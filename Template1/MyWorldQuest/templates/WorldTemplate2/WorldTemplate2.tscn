@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxvv6gvdjvjk2"]
+
+[ext_resource type="Script" path="res://templates/WorldTemplate2/player.gd" id="1_72f3p"]
+[ext_resource type="Script" path="res://templates/WorldTemplate2/world_template_2.gd" id="1_s5mlr"]
+[ext_resource type="Texture2D" uid="uid://dbijln27tci8m" path="res://icon.svg" id="2_g3fiq"]
+[ext_resource type="Script" path="res://extra/MWQ.gd" id="2_njj0e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ur3c"]
+size = Vector2(116, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2by6c"]
+size = Vector2(112, 114)
+
+[node name="WorldTemplate2" type="Node2D"]
+script = ExtResource("1_s5mlr")
+
+[node name="MWQ" type="Control" parent="." node_paths=PackedStringArray("node_connector")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_njj0e")
+node_connector = NodePath("..")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(816, 813)
+scale = Vector2(12.6641, 12.6641)
+texture = ExtResource("2_g3fiq")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(821, 875)
+script = ExtResource("1_72f3p")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("2_g3fiq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_2ur3c")
+
+[node name="Area2D" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+shape = SubResource("RectangleShape2D_2by6c")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+unique_name_in_owner = true
+zoom = Vector2(0.3, 0.3)
+
+[node name="LabelPlayerUsername" type="Label" parent="Player"]
+unique_name_in_owner = true
+offset_left = -54.0
+offset_top = 66.0
+offset_right = -14.0
+offset_bottom = 89.0
+theme_override_font_sizes/font_size = 33
+text = "who am I??"

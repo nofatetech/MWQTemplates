@@ -1,6 +1,10 @@
 extends Node
 class_name MWQ
 
+#@export var backend_url: String = "http://127.0.0.1:5000"
+@export var backend_url: String = "https://myworld.quest/?action=apiworld"
+@export var app_token: String = ""
+
 
 @export var node_connector: Node
 #@export var world_name: String
@@ -10,9 +14,11 @@ var current_player = {}
 var wpt: String = ""
 #var console = JavaScriptBridge.get_interface("console")
 
-@export	var mainurl = "https://myworld.quest/?action=apiworld"
+@export var mainurl = "https://myworld.quest/?action=apiworld"
 
 
+#func flow_run(flow_name: String, params: {}, _callback_flow: Callable):
+	#pass
 
 func x_apiworld(data: Dictionary, world_player_token: String, callback: Callable):
 	# Create an HTTPRequest node
@@ -106,7 +112,42 @@ func _on_identify_callback(result, response_code, headers, body):
 func x_identify():
 	# Extract the 'param' query parameter from the URL
 	var wpt_value = JavaScriptBridge.eval("new URLSearchParams(window.location.search).get('wpt')")
-	self.x_apiworld( {"flow": "identify", "token": wpt_value}, "", _on_identify_callback)	
+	self.x_flow("identify",  {"token": wpt_value}, _on_identify_callback)	
+
+
+
+
+
+
+
+func x_flow(flowname: String, params = {}, callback: Callable = self._on_request_flow_completed_default):
+	var headers = [
+		"Content-Type: application/json",
+		#"Authorization: Bearer YOUR_API_TOKEN"  # Replace with your token if needed
+	]
+	var body = {
+		"flow": flowname,
+		"params": params
+	}
+	var json = JSON.new()
+	var body_json = json.stringify(body)
+	
+	var req = HTTPRequest.new()
+	add_child(req)
+	req.request_completed.connect(callback)
+	#var err = req.request(backend_url + "/flow", headers, HTTPClient.METHOD_POST, body_json)
+	var err = req.request(mainurl, headers, HTTPClient.METHOD_POST, body_json)
+
+func _on_request_flow_completed_default(result, response_code, headers, body):
+	var json = JSON.parse_string(body.get_string_from_utf8())
+	print("-------")
+	print("_on_request_flow_completed_default")
+	print(json)
+	print("-------")
+	pass
+
+
+
 
 
 
