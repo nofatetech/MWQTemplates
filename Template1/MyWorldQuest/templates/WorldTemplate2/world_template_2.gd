@@ -6,13 +6,25 @@ extends Node2D
 var dynamyc_node_camera2d: Node = null  # Variable to store the reference to the changing node
 
 var tcurrentplayer: Node = null
+var other_players_here: Array = []
 
 
-
-func mwq_receive_player(player: Dictionary):
+func mwq_identify_receive_data(data: Dictionary):
 	print("mwq_receive_player")
-	print(mwq_receive_player)
-	%LabelPlayerUsername.text = player.username
+	#print(mwq_receive_player)
+	whoami = data.get("player")
+	other_players_here = data.get("other_players_here")
+	%LabelPlayerUsername.text = whoami.username
+	# Create an empty string to store the usernames
+	var usernames = ""
+	
+	# Loop through each player object in the list and append their username
+	for player in other_players_here:
+		usernames += player["username"] + "\n"  # Add each username on a new line
+	
+	# Set the label's text to the list of usernames
+	%LabelOtherPlayersHere.text = usernames
+	
 	pass
 
 # Called when the node enters the scene tree for the first time.

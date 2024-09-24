@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var username: String = ""
 #@export var id: int = 100
 #@export var title: String = ""
-@export var speed: float = 210
+@export var speed: float = 500
 @export var accel: float = 10
 
 signal hit
@@ -28,6 +28,16 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if true: #is_current_player:
+		var motion = Vector2()
+		if Input.is_action_pressed("up"):
+			motion.y -= 1
+		if Input.is_action_pressed("down"):
+			motion.y += 1
+		if Input.is_action_pressed("left"):
+			motion.x -= 1
+		if Input.is_action_pressed("right"):
+			motion.x += 1
+		
 		var direction: Vector2 = Input.get_vector("left", "right", "up", "down")
 
 		velocity.x = move_toward(velocity.x, speed * direction.x, accel)

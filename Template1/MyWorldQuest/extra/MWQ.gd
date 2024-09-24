@@ -3,8 +3,8 @@ class_name MWQ
 
 #@export var backend_url: String = "http://127.0.0.1:5000"
 @export var backend_url: String = "https://myworld.quest/?action=apiworld"
-@export var app_token: String = ""
-
+@export var test_token: String = ""
+@export var ISDEV: bool = true
 
 @export var node_connector: Node
 #@export var world_name: String
@@ -86,7 +86,13 @@ func x_change_page(page: String, target: Node) -> void:
 
 
 func _on_identify_callback(result, response_code, headers, body):
+	print("FLOW")
+	print(result)
+	print(response_code)
+	print(headers)
+	#print(body)
 	if response_code == 200:  # HTTP OK
+		print("FLOW2")
 		var json = JSON.new()
 		json.parse(body.get_string_from_utf8())
 		var response_data = json.get_data()
@@ -100,7 +106,7 @@ func _on_identify_callback(result, response_code, headers, body):
 			current_player = player
 			print("player!")
 			print(player)
-			node_connector.mwq_receive_player(player)
+			node_connector.mwq_identify_receive_data(data)
 			
 		else:
 			#print("Failed to parse JSON:", response_data.error_string())
@@ -112,6 +118,8 @@ func _on_identify_callback(result, response_code, headers, body):
 func x_identify():
 	# Extract the 'param' query parameter from the URL
 	var wpt_value = JavaScriptBridge.eval("new URLSearchParams(window.location.search).get('wpt')")
+	if ISDEV:
+		wpt_value = test_token
 	self.x_flow("identify",  {"token": wpt_value}, _on_identify_callback)	
 
 
