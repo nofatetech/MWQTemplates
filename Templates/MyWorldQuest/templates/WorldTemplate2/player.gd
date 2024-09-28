@@ -29,22 +29,32 @@ func _ready():
 func _process(delta):
 	if true: #is_current_player:
 		var motion = Vector2()
+		velocity = Vector2.ZERO
+		
 		if Input.is_action_pressed("up"):
 			motion.y -= 1
+			velocity.y -= speed
 		if Input.is_action_pressed("down"):
+			velocity.y += speed
 			motion.y += 1
 		if Input.is_action_pressed("left"):
+			velocity.x -= speed
 			motion.x -= 1
 		if Input.is_action_pressed("right"):
+			velocity.x += speed
 			motion.x += 1
 		
-		var direction: Vector2 = Input.get_vector("left", "right", "up", "down")
-
-		velocity.x = move_toward(velocity.x, speed * direction.x, accel)
-		velocity.y = move_toward(velocity.y, speed * direction.y, accel)
+		#velocity = move_and_slide(velocity)
+		var collision = move_and_collide(velocity * delta)
+		if collision:
+			print("I collided with ", collision.get_collider().name)
 		
+		#var direction: Vector2 = Input.get_vector("left", "right", "up", "down")
+		#velocity.x = move_toward(velocity.x, speed * direction.x, accel)
+		#velocity.y = move_toward(velocity.y, speed * direction.y, accel)
 		#move_and_slide()
-		position += velocity * delta
+		#position += velocity * delta
+		
 	pass
 
 

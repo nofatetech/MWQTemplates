@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxjrpg7nrli6x"]
+
+[ext_resource type="Script" path="res://templates/WorldTemplate3/world_template_3.gd" id="1_qnktq"]
+[ext_resource type="Script" path="res://extra/MWQ.gd" id="2_fh0r5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uhio4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_43lj2"]
+
+[node name="WorldTemplate3" type="Node3D"]
+script = ExtResource("1_qnktq")
+
+[node name="MWQ" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_fh0r5")
+test_token = "7c6b180a9d80e38cd2ac4251686aaa5ae3d140c6bb"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(33, 0, 0, 0, 1, 0, 0, 0, 33, 0, 0, 0)
+mesh = SubResource("BoxMesh_uhio4")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.975308, 0.220851, 0, -0.220851, 0.975308, 0, 2.908, 3.78648)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.984044, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29582, 0)
+shape = SubResource("BoxShape3D_43lj2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]

@@ -1,0 +1,307 @@
+[gd_scene load_steps=22 format=3 uid="uid://dxvv6gvdjvjk2"]
+
+[ext_resource type="Script" path="res://templates/WorldTemplate2/player.gd" id="1_72f3p"]
+[ext_resource type="Script" path="res://templates/WorldTemplate2/world_template_2.gd" id="1_s5mlr"]
+[ext_resource type="Texture2D" uid="uid://dbijln27tci8m" path="res://icon.svg" id="2_g3fiq"]
+[ext_resource type="Script" path="res://extra/MWQ.gd" id="2_njj0e"]
+[ext_resource type="Script" path="res://extra/MWQ_Wordpress.gd" id="3_36f1u"]
+[ext_resource type="Texture2D" uid="uid://diwapsuggvg3e" path="res://templates/WorldTemplate2/assets/578102df-7188-48ad-988f-4978d112721f.webp" id="4_m7306"]
+[ext_resource type="Texture2D" uid="uid://cqlof2mpgi1wq" path="res://templates/WorldTemplate2/assets/e70649b7-7892-4bd7-ad47-687543b2b1ff.webp" id="5_rul7d"]
+[ext_resource type="Texture2D" uid="uid://dx0lq2efln8hg" path="res://templates/WorldTemplate2/assets/e76be929-d917-445a-b334-549db206f142.webp" id="7_qvak5"]
+[ext_resource type="Texture2D" uid="uid://copc6q4gvufqk" path="res://templates/WorldTemplate2/assets/where_in_time_is_carmen_sandiego_25_1.webp" id="8_qw4al"]
+[ext_resource type="Texture2D" uid="uid://ds2cqgclqawcw" path="res://templates/WorldTemplate2/assets/instrument-3888684_1280.png" id="8_u7pn7"]
+[ext_resource type="Texture2D" uid="uid://ci0xsuu5gvmmy" path="res://templates/WorldTemplate2/assets/network-3357642_1280.webp" id="9_m1udd"]
+[ext_resource type="Texture2D" uid="uid://cvll1krx05qpd" path="res://templates/WorldTemplate2/assets/tape-6824489_1280.jpg" id="9_qgbep"]
+[ext_resource type="Texture2D" uid="uid://cmhukjeyx2ku0" path="res://templates/WorldTemplate2/assets/e12e90ad-3a8f-4d93-8110-db5613d3250a.webp" id="11_3fywf"]
+[ext_resource type="Shader" path="res://templates/WorldTemplate2/ShaderPlayerShadow.gdshader" id="12_vk7g5"]
+[ext_resource type="Texture2D" uid="uid://bc772vebli86q" path="res://templates/WorldTemplate2/assets/ai-generated-8540921_1280.jpg" id="14_ahlby"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6iojk"]
+size = Vector2(299.611, 212.012)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l66iv"]
+size = Vector2(270.815, 188.736)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i4viy"]
+radius = 247.841
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2f3li"]
+radius = 241.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ur3c"]
+size = Vector2(116, 112)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r7sui"]
+shader = ExtResource("12_vk7g5")
+
+[node name="WorldTemplate2" type="Node2D"]
+script = ExtResource("1_s5mlr")
+
+[node name="MWQ" type="Node" parent="." node_paths=PackedStringArray("node_connector")]
+script = ExtResource("2_njj0e")
+test_token = "77e0ced56691ec4adb6be90d98472fd1f182677dc6"
+ISDEV = true
+node_connector = NodePath("..")
+
+[node name="MWQ_Wordpress" type="Node" parent="MWQ"]
+script = ExtResource("3_36f1u")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
+custom_minimum_size = Vector2(333, 0)
+offset_left = -2348.0
+offset_top = -2504.0
+offset_right = 4465.0
+offset_bottom = 3120.0
+color = Color(0.054902, 0.054902, 0.054902, 1)
+
+[node name="Icon" type="Sprite2D" parent="Node2D"]
+visible = false
+position = Vector2(816, 813)
+scale = Vector2(12.6641, 12.6641)
+texture = ExtResource("2_g3fiq")
+
+[node name="578102Df-7188-48Ad-988f-4978d112721f" type="Sprite2D" parent="Node2D"]
+visible = false
+position = Vector2(846, 1165)
+texture = ExtResource("4_m7306")
+
+[node name="E70649b7-7892-4Bd7-ad47-687543b2b1Ff" type="Sprite2D" parent="Node2D"]
+visible = false
+position = Vector2(1492, 2079)
+scale = Vector2(1.80769, 1.80769)
+texture = ExtResource("5_rul7d")
+
+[node name="StaticBody2D" type="RigidBody2D" parent="Node2D/E70649b7-7892-4Bd7-ad47-687543b2b1Ff"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/E70649b7-7892-4Bd7-ad47-687543b2b1Ff/StaticBody2D"]
+position = Vector2(-178.159, 186.595)
+shape = SubResource("RectangleShape2D_6iojk")
+
+[node name="Area2D" type="Area2D" parent="Node2D/E70649b7-7892-4Bd7-ad47-687543b2b1Ff"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/E70649b7-7892-4Bd7-ad47-687543b2b1Ff/Area2D"]
+position = Vector2(207.494, 137.095)
+shape = SubResource("RectangleShape2D_l66iv")
+
+[node name="E76Be929-d917-445a-b334-549Db206f142" type="Sprite2D" parent="Node2D"]
+visible = false
+position = Vector2(1080.25, 1352.69)
+scale = Vector2(1.74489, 1.74489)
+texture = ExtResource("7_qvak5")
+
+[node name="Network-33576421280" type="Sprite2D" parent="Node2D"]
+visible = false
+position = Vector2(1403, 894)
+scale = Vector2(3.48958, 3.48958)
+texture = ExtResource("9_m1udd")
+
+[node name="WhereInTimeIsCarmenSandiego251" type="Sprite2D" parent="Node2D"]
+visible = false
+position = Vector2(788, 1119)
+scale = Vector2(5.55365, 5.55365)
+texture = ExtResource("8_qw4al")
+
+[node name="Button" type="Button" parent="Node2D/WhereInTimeIsCarmenSandiego251"]
+offset_left = -1.0
+offset_top = 75.0
+offset_right = 36.0
+offset_bottom = 94.0
+theme_override_font_sizes/font_size = 7
+
+[node name="Instrument-38886841280" type="Sprite2D" parent="Node2D"]
+visible = false
+position = Vector2(1065, 907)
+scale = Vector2(1.39111, 1.39111)
+texture = ExtResource("8_u7pn7")
+
+[node name="Tape-68244891281" type="Sprite2D" parent="Node2D"]
+position = Vector2(811, 944)
+scale = Vector2(3.12646, 3.12646)
+texture = ExtResource("9_qgbep")
+
+[node name="AREAS" type="Node2D" parent="."]
+
+[node name="WORK" type="Node2D" parent="AREAS"]
+position = Vector2(-56, -53)
+
+[node name="Ai-generated-85409211280" type="Sprite2D" parent="AREAS/WORK"]
+position = Vector2(796, -566)
+scale = Vector2(1.75732, 1.75732)
+texture = ExtResource("14_ahlby")
+
+[node name="TextureRect" type="ColorRect" parent="AREAS/WORK/Ai-generated-85409211280"]
+offset_left = -343.0
+offset_top = -312.0
+offset_right = 618.0
+offset_bottom = 291.0
+color = Color(0.872842, 0.8645, 0.91, 0.227451)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="AREAS/WORK/Ai-generated-85409211280/TextureRect"]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 97.0
+offset_right = 857.0
+offset_bottom = 653.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 31
+text = "MY WORK
+
+asdf
+sadf
+sadf
+sadf
+sadf
+sdaf
+sadf
+sad
+f"
+
+[node name="Button" type="Button" parent="AREAS/WORK/Ai-generated-85409211280/TextureRect"]
+layout_mode = 0
+offset_left = 284.0
+offset_top = 283.0
+offset_right = 558.0
+offset_bottom = 395.0
+text = "My WOrk
+"
+
+[node name="POSITIVE IMPACT" type="Node2D" parent="AREAS"]
+position = Vector2(1441, -211)
+
+[node name="E12e90Ad-3a8f-4d93-8110-db5613d3250a" type="Sprite2D" parent="AREAS/POSITIVE IMPACT"]
+position = Vector2(1456, -104)
+scale = Vector2(0.914663, 0.914663)
+texture = ExtResource("11_3fywf")
+
+[node name="TextureRect" type="ColorRect" parent="AREAS/POSITIVE IMPACT/E12e90Ad-3a8f-4d93-8110-db5613d3250a"]
+offset_left = -704.084
+offset_top = -664.726
+offset_right = 396.916
+offset_bottom = 81.2745
+color = Color(0.872842, 0.8645, 0.91, 0.458824)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="AREAS/POSITIVE IMPACT/E12e90Ad-3a8f-4d93-8110-db5613d3250a/TextureRect"]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 87.0
+offset_right = 826.0
+offset_bottom = 643.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 31
+text = "POSITIVE IMPACT
+
+- Participate with a Foundation and a National Commite for Innovation.
+- Collaborated to make the first TEDx
+- Participated 
+"
+
+[node name="Button" type="Button" parent="AREAS/POSITIVE IMPACT/E12e90Ad-3a8f-4d93-8110-db5613d3250a/TextureRect"]
+layout_mode = 0
+offset_left = 799.0
+offset_top = 555.0
+offset_right = 1073.0
+offset_bottom = 667.0
+text = "My WOrk
+"
+
+[node name="PLAYERS" type="Node2D" parent="AREAS"]
+
+[node name="LabelOtherPlayersHere" type="Label" parent="AREAS/PLAYERS"]
+unique_name_in_owner = true
+offset_left = 2057.0
+offset_top = 972.0
+offset_right = 3400.0
+offset_bottom = 2043.0
+theme_override_font_sizes/font_size = 42
+text = "Other players here:
+None for now.."
+
+[node name="WALLS1" type="CharacterBody2D" parent="AREAS"]
+position = Vector2(159, 731)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AREAS/WALLS1"]
+position = Vector2(98.5, 144)
+shape = SubResource("CircleShape2D_i4viy")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AREAS/WALLS1"]
+position = Vector2(1044, 156)
+shape = SubResource("CircleShape2D_2f3li")
+
+[node name="WALLS" type="Node2D" parent="AREAS"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(1719, 191)
+collision_layer = 2
+script = ExtResource("1_72f3p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+light_mask = 2
+shape = SubResource("RectangleShape2D_2ur3c")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Player"]
+modulate = Color(0, 0, 0, 0.713726)
+self_modulate = Color(1, 1, 1, 0.54902)
+material = SubResource("ShaderMaterial_r7sui")
+position = Vector2(-24, 22)
+texture = ExtResource("2_g3fiq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("2_g3fiq")
+
+[node name="LabelPlayerUsername" type="Label" parent="Player"]
+unique_name_in_owner = true
+offset_left = -54.0
+offset_top = 66.0
+offset_right = -14.0
+offset_bottom = 89.0
+theme_override_font_sizes/font_size = 33
+text = "who am I??"
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+unique_name_in_owner = true
+position = Vector2(-1, -1)
+zoom = Vector2(0.5, 0.5)
+
+[node name="LEFT" type="Button" parent="Player"]
+offset_left = -235.0
+offset_top = -38.0
+offset_right = -110.0
+offset_bottom = 66.0
+text = "LEFT"
+
+[node name="RIGHT" type="Button" parent="Player"]
+offset_left = 109.0
+offset_top = -45.0
+offset_right = 225.0
+offset_bottom = 60.0
+text = "RIGHT"
+
+[node name="UP" type="Button" parent="Player"]
+offset_left = -71.0
+offset_top = -198.0
+offset_right = 45.0
+offset_bottom = -93.0
+text = "UP"
+
+[node name="DOWN" type="Button" parent="Player"]
+offset_left = -51.0
+offset_top = 123.0
+offset_right = 65.0
+offset_bottom = 228.0
+text = "DOWN"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3

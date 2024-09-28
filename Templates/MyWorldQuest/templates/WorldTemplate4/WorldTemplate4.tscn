@@ -1,0 +1,104 @@
+[gd_scene load_steps=9 format=3 uid="uid://dqjrpo5bx4aet"]
+
+[ext_resource type="Script" path="res://templates/WorldTemplate4/WorldTemplate4.gd" id="1_gh1g5"]
+[ext_resource type="PackedScene" uid="uid://dgoigr2yals60" path="res://templates/WorldTemplate4/assets/WpPost.tscn" id="2_db56b"]
+[ext_resource type="Texture2D" uid="uid://diwapsuggvg3e" path="res://templates/WorldTemplate2/assets/578102df-7188-48ad-988f-4978d112721f.webp" id="3_kycuv"]
+[ext_resource type="Script" path="res://templates/WorldTemplate2/player.gd" id="4_ggwwn"]
+[ext_resource type="Shader" path="res://templates/WorldTemplate2/ShaderPlayerShadow.gdshader" id="5_npda1"]
+[ext_resource type="Texture2D" uid="uid://dbijln27tci8m" path="res://icon.svg" id="6_2l40j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epqnr"]
+size = Vector2(116, 112)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yb2l7"]
+shader = ExtResource("5_npda1")
+
+[node name="WorldTemplate4" type="Node2D" node_paths=PackedStringArray("wp_post_parent_scene")]
+script = ExtResource("1_gh1g5")
+wp_api_url = "https://public-api.wordpress.com/wp/v2/sites/myweb1712.wordpress.com/posts"
+posts_per_page = 33
+wp_post_scene = ExtResource("2_db56b")
+wp_post_parent_scene = NodePath("Control/VBoxContainer")
+jobdb_category_id = 7047727
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.344076, 0.344076, 0.344076, 1)
+offset_left = -1380.0
+offset_top = -1840.0
+offset_right = 1910.0
+offset_bottom = 2715.0
+texture = ExtResource("3_kycuv")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 33.0
+offset_top = 33.0
+offset_right = 73.0
+offset_bottom = 73.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_right = 625.0
+offset_bottom = 700.0
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(288, 267)
+collision_layer = 2
+script = ExtResource("4_ggwwn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+light_mask = 2
+shape = SubResource("RectangleShape2D_epqnr")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Player"]
+modulate = Color(0, 0, 0, 0.713726)
+self_modulate = Color(1, 1, 1, 0.54902)
+material = SubResource("ShaderMaterial_yb2l7")
+position = Vector2(-24, 22)
+texture = ExtResource("6_2l40j")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("6_2l40j")
+
+[node name="LabelPlayerUsername" type="Label" parent="Player"]
+unique_name_in_owner = true
+offset_left = -54.0
+offset_top = 66.0
+offset_right = -14.0
+offset_bottom = 89.0
+theme_override_font_sizes/font_size = 33
+text = "who am I??"
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+unique_name_in_owner = true
+position = Vector2(-1, -1)
+zoom = Vector2(0.5, 0.5)
+
+[node name="LEFT" type="Button" parent="Player"]
+offset_left = -235.0
+offset_top = -38.0
+offset_right = -110.0
+offset_bottom = 66.0
+text = "LEFT"
+
+[node name="RIGHT" type="Button" parent="Player"]
+offset_left = 109.0
+offset_top = -45.0
+offset_right = 225.0
+offset_bottom = 60.0
+text = "RIGHT"
+
+[node name="UP" type="Button" parent="Player"]
+offset_left = -71.0
+offset_top = -198.0
+offset_right = 45.0
+offset_bottom = -93.0
+text = "UP"
+
+[node name="DOWN" type="Button" parent="Player"]
+offset_left = -51.0
+offset_top = 123.0
+offset_right = 65.0
+offset_bottom = 228.0
+text = "DOWN"

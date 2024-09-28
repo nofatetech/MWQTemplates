@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgoigr2yals60"]
+
+[ext_resource type="Script" path="res://templates/WorldTemplate4/assets/WpPost.gd" id="1_6b05p"]
+
+[node name="WpPost" type="Control" node_paths=PackedStringArray("title_label", "content_label", "summary_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6b05p")
+title_label = NodePath("MarginContainer/TitleLabel")
+content_label = NodePath("Control/ColorRect/VBoxContainer2/ContentLabel")
+summary_label = NodePath("Control/ColorRect/VBoxContainer2/SummaryLabel")
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/ColorRect"]
+layout_mode = 2
+offset_right = 81.0
+offset_bottom = 54.0
+
+[node name="SummaryLabel" type="Label" parent="Control/ColorRect/VBoxContainer2"]
+layout_mode = 2
+text = "SUMMARY"
+
+[node name="ContentLabel" type="RichTextLabel" parent="Control/ColorRect/VBoxContainer2"]
+layout_mode = 2
+text = "CONTENT"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TitleLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 33
+text = "TITLE"

@@ -4,7 +4,7 @@ class_name MWQ
 #@export var backend_url: String = "http://127.0.0.1:5000"
 @export var backend_url: String = "https://myworld.quest/?action=apiworld"
 @export var test_token: String = ""
-@export var ISDEV: bool = true
+@export var ISDEV: bool = false
 
 @export var node_connector: Node
 #@export var world_name: String
@@ -119,7 +119,9 @@ func x_identify():
 	# Extract the 'param' query parameter from the URL
 	var wpt_value = JavaScriptBridge.eval("new URLSearchParams(window.location.search).get('wpt')")
 	if ISDEV:
-		wpt_value = test_token
+		pass
+		#wpt_value = test_token
+		#wpt_value = "97831e9a87b1ad0c5b0a6b2c9025ba77bd771217a8"
 	self.x_flow("identify",  {"token": wpt_value}, _on_identify_callback)	
 
 
@@ -139,6 +141,11 @@ func x_flow(flowname: String, params = {}, callback: Callable = self._on_request
 	}
 	var json = JSON.new()
 	var body_json = json.stringify(body)
+	
+	if ISDEV:
+		mainurl = "http://127.0.0.1:5000/?action=apiworld"
+		pass
+
 	
 	var req = HTTPRequest.new()
 	add_child(req)
