@@ -23,10 +23,10 @@ jobdb_category_id = 7047727
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.344076, 0.344076, 0.344076, 1)
-offset_left = -1380.0
-offset_top = -1840.0
-offset_right = 1910.0
-offset_bottom = 2715.0
+offset_left = -2106.0
+offset_top = -2845.0
+offset_right = 2636.0
+offset_bottom = 3721.0
 texture = ExtResource("3_kycuv")
 
 [node name="Control" type="Control" parent="."]

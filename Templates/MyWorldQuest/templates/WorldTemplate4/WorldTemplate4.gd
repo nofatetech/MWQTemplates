@@ -18,8 +18,6 @@ func _ready() -> void:
 # Category ID for "JobDB" (replace with the actual category ID)
 
 func load_posts(page: int) -> void:
-	# Add category and tag fetching to the query
-	#var url := wp_api_url + "?page=" + str(page) + "&per_page=" + str(posts_per_page) + "&categories=" + str(jobdb_category_id) + "&_embed=tags"
 	var url := wp_api_url + "?page=" + str(page) + "&per_page=" + str(posts_per_page) + "&categories=" + str(jobdb_category_id) + "&_embed=tags"
 	
 	var request := HTTPRequest.new()
@@ -41,28 +39,45 @@ func _on_request_completed(result: int, response_code: int, headers: Array, body
 		if true: #json_data.error == OK:
 			var posts = json_data#.result
 
-			# Loop through each post and instantiate WpPost objects
-			for post in posts:
-				print("response")
-				print(post.get("title").get("rendered"))
-				print(post.get("class_list"))
-				#return
-				#return
-				var wp_post_node := wp_post_scene.instantiate()
-				if true: # wp_post_node is WpPost:
-					# Extract necessary data from the post
-					var post_data = {
-						"title": post.get("title").get("rendered", "No Title"),
-						"content": post.get("content").get("rendered", "No Content"),
-						"summary": post.get("excerpt").get("rendered", "No Summary")
-					}
-					# Set the data on the WpPost node
-					wp_post_node.set_data(post_data)
-					print("xxx1")
-					print(post_data)
+			## Loop through each post and instantiate WpPost objects
+			#for post in posts:
+				#print(post.get("title").get("rendered"))
+				#print(post.get("class_list"))
+				#var wp_post_node := wp_post_scene.instantiate()
+				#if true: # wp_post_node is WpPost:
+					## Extract necessary data from the post
+					#var post_data = {
+						#"title": post.get("title").get("rendered", "No Title"),
+						#"content": post.get("content").get("rendered", "No Content"),
+						#"summary": post.get("excerpt").get("rendered", "No Summary")
+					#}
+					## Set the data on the WpPost node
+					#wp_post_node.set_data(post_data)
+					#print(post_data)
 
-					# Add the WpPost node to the scene (you can use a container like VBoxContainer)
-					wp_post_parent_scene.add_child(wp_post_node)
+			for post in posts:
+				var tags: Array = post.get("class_list", [])
+
+				# If the post contains a "job" related tag, instantiate the WpPost node
+				if true: #has_job_tag:
+					var wp_post_node := wp_post_scene.instantiate()
+					if true: #wp_post_node is WpPost:
+						# Extract necessary data from the post
+						var post_data = {
+							"title": post.get("title").get("rendered", "No Title"),
+							"content": post.get("content").get("rendered", "No Content"),
+							"summary": post.get("excerpt").get("rendered", "No Summary"),
+							"tags": tags,
+							#"main_image": "https://myworld.quest/static/uploads/PT_GXk4PV5aMAA8PnB.jpg",
+						}
+						print("post_data")
+						print(post_data.get("title"))
+						print(post_data.get("tags"))
+						# Set the data on the WpPost node
+						wp_post_node.set_data(post_data)
+
+						# Add the WpPost node to the scene (you can use a container like VBoxContainer)
+						wp_post_parent_scene.add_child(wp_post_node)
 
 			# Example: get total number of pages from response headers (for pagination)
 			for header in headers:

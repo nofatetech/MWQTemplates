@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgoigr2yals60"]
+[gd_scene load_steps=3 format=3 uid="uid://dgoigr2yals60"]
 
 [ext_resource type="Script" path="res://templates/WorldTemplate4/assets/WpPost.gd" id="1_6b05p"]
+[ext_resource type="Texture2D" uid="uid://co7cd6bta44h6" path="res://templates/WorldTemplate4/assets/Flame.png" id="2_gxfk8"]
 
-[node name="WpPost" type="Control" node_paths=PackedStringArray("title_label", "content_label", "summary_label")]
+[node name="WpPost" type="Control" node_paths=PackedStringArray("title_label", "content_label", "summary_label", "tags_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,9 +13,39 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_6b05p")
-title_label = NodePath("MarginContainer/TitleLabel")
+title_label = NodePath("Node2D/TitleLabel")
 content_label = NodePath("Control/ColorRect/VBoxContainer2/ContentLabel")
 summary_label = NodePath("Control/ColorRect/VBoxContainer2/SummaryLabel")
+tags_label = NodePath("Node2D/TagsRichTextLabel")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Node2D"]
+modulate = Color(0.590809, 0.375934, 0.158521, 1)
+texture = ExtResource("2_gxfk8")
+gravity = Vector2(0, 0)
+initial_velocity_min = 333.0
+initial_velocity_max = 333.0
+
+[node name="TitleLabel" type="Label" parent="Node2D"]
+offset_right = 777.0
+offset_bottom = 76.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 55
+text = "TITLE"
+
+[node name="TagsRichTextLabel" type="RichTextLabel" parent="Node2D"]
+custom_minimum_size = Vector2(777, 111)
+offset_top = 86.0
+offset_right = 777.0
+offset_bottom = 197.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 33
+bbcode_enabled = true
+text = "LOREM IPSUM"
 
 [node name="Control" type="Control" parent="."]
 visible = false
@@ -45,14 +76,15 @@ layout_mode = 2
 text = "CONTENT"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TitleLabel" type="Label" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 1, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 33
-text = "TITLE"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -177.0
+offset_top = 2.0
+offset_right = -20.0
+offset_bottom = 159.0
