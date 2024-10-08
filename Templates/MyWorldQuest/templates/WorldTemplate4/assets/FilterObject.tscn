@@ -1,0 +1,101 @@
+[gd_scene load_steps=4 format=3 uid="uid://dl820ctf1il65"]
+
+[ext_resource type="Script" path="res://templates/WorldTemplate4/FilterObject.gd" id="1_k6cpr"]
+[ext_resource type="FontFile" uid="uid://cu8lb6tmnrvy" path="res://templates/WorldTemplate4/assets/SpecialElite-Regular.ttf" id="2_mgo12"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6yaal"]
+size = Vector2(3775, 203)
+
+[node name="FilterObject" type="Node2D" node_paths=PackedStringArray("label", "shadow_label", "emoji_label")]
+script = ExtResource("1_k6cpr")
+label = NodePath("Label2")
+shadow_label = NodePath("Label3")
+emoji_label = NodePath("EmojiLabel")
+
+[node name="JobsParent" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="JobsParent"]
+offset_left = 473.0
+offset_top = -94.0
+offset_right = 583.0
+offset_bottom = -4.0
+theme_override_font_sizes/font_size = 55
+text = "📄"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Label2" type="Label" parent="JobsParent"]
+visible = false
+offset_left = 357.0
+offset_top = 15.0
+offset_right = 933.0
+offset_bottom = 328.0
+theme_override_font_sizes/font_size = 55
+text = "Contract Senior Clinical Data Associate Risk Based Quality Monitoring"
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1683.5, 7.5)
+shape = SubResource("RectangleShape2D_6yaal")
+
+[node name="EmojiLabel" type="Label" parent="."]
+offset_left = -196.0
+offset_top = -149.0
+offset_right = -30.0
+offset_bottom = 185.0
+theme_override_fonts/font = ExtResource("2_mgo12")
+theme_override_font_sizes/font_size = 333
+text = "?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+offset_left = -3.0
+offset_top = 7.0
+offset_right = 151.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(0, 0, 0, 0.717647)
+theme_override_fonts/font = ExtResource("2_mgo12")
+theme_override_font_sizes/font_size = 77
+text = "filter?"
+
+[node name="Label2" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_mgo12")
+theme_override_font_sizes/font_size = 77
+text = "filter?"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(35, 26)
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 33
+theme_override_constants/margin_top = 33
+theme_override_constants/margin_right = 33
+theme_override_constants/margin_bottom = 33
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+custom_minimum_size = Vector2(420, 420)
+layout_mode = 2
+color = Color(0.0646965, 0.0646965, 0.0646965, 1)
+
+[node name="Label" type="Label" parent="MarginContainer/ColorRect"]
+layout_mode = 2
+offset_right = 304.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 42
+text = "🤓 Engineer"
+
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_left = -344.0
+offset_top = 8.0
+offset_right = -143.0
+offset_bottom = 54.0
+text = "GO"

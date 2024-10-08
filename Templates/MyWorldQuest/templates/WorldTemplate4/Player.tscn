@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://djr0gr5mo5ttl"]
+
+[ext_resource type="Script" path="res://templates/WorldTemplate2/player.gd" id="1_m326o"]
+[ext_resource type="Shader" path="res://templates/WorldTemplate2/ShaderPlayerShadow.gdshader" id="2_5vd5a"]
+[ext_resource type="Texture2D" uid="uid://dbijln27tci8m" path="res://icon.svg" id="3_r6hm7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epqnr"]
+size = Vector2(116, 112)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yb2l7"]
+shader = ExtResource("2_5vd5a")
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(288, 267)
+collision_layer = 2
+script = ExtResource("1_m326o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 2
+shape = SubResource("RectangleShape2D_epqnr")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.713726)
+self_modulate = Color(1, 1, 1, 0.54902)
+material = SubResource("ShaderMaterial_yb2l7")
+position = Vector2(-24, 22)
+texture = ExtResource("3_r6hm7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_r6hm7")
+
+[node name="LabelPlayerUsername" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -54.0
+offset_top = 66.0
+offset_right = -14.0
+offset_bottom = 89.0
+theme_override_font_sizes/font_size = 33
+text = "who am I??"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-1, -1)
+zoom = Vector2(0.5, 0.5)
+
+[node name="LEFT" type="Button" parent="."]
+offset_left = -235.0
+offset_top = -38.0
+offset_right = -110.0
+offset_bottom = 66.0
+theme_override_font_sizes/font_size = 0
+text = "LEFT"
+
+[node name="RIGHT" type="Button" parent="."]
+offset_left = 109.0
+offset_top = -45.0
+offset_right = 225.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 0
+text = "RIGHT"
+
+[node name="UP" type="Button" parent="."]
+offset_left = -71.0
+offset_top = -198.0
+offset_right = 45.0
+offset_bottom = -93.0
+theme_override_font_sizes/font_size = 0
+text = "UP"
+
+[node name="DOWN" type="Button" parent="."]
+offset_left = -51.0
+offset_top = 123.0
+offset_right = 65.0
+offset_bottom = 228.0
+text = "DOWN"

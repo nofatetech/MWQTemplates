@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfel6vdyx7ti4"]
+
+[ext_resource type="Script" path="res://templates/WorldTemplate5/WorldTemplate5.gd" id="1_ny4c1"]
+
+[node name="WorldTemplate5" type="Node2D"]
+script = ExtResource("1_ny4c1")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "MyWorld Banking"
+
+[node name="Label2" type="Label" parent="."]
+offset_top = 38.0
+offset_right = 137.0
+offset_bottom = 61.0
+text = "Slogan"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -54.0
+offset_right = 80.0
+offset_bottom = -23.0
+grow_vertical = 0
+text = "My Profile"
+
+[node name="Button2" type="Button" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 161.0
+offset_top = -54.0
+offset_right = 247.0
+offset_bottom = -23.0
+grow_vertical = 0
+text = "My Budget/Plan"
+
+[node name="Button3" type="Button" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 336.0
+offset_top = -54.0
+offset_right = 468.0
+offset_bottom = -23.0
+grow_vertical = 0
+text = "My Journey"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 47.0
+offset_top = -503.0
+offset_right = 403.0
+offset_bottom = -84.0
+grow_vertical = 0
+text = "- PROFILE / SETTINGS
+-- Roles (worker, stay at home parent, dad/mom, daughter, etc)
+-- Health, Work, Aspirations, Aptitude
+
+- BUDGET / PLAN
+-- bill payments, transfers
+
+- JOURNEY
+-- network
+-- loyalty, gamification
+-- investments
+-- wishlists
+-- calendar, activities suggestions
+
+open protocol api
+"

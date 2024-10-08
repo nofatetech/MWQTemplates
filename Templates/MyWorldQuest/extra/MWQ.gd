@@ -119,9 +119,11 @@ func x_identify():
 	# Extract the 'param' query parameter from the URL
 	var wpt_value = JavaScriptBridge.eval("new URLSearchParams(window.location.search).get('wpt')")
 	if ISDEV:
-		pass
-		#wpt_value = test_token
+		#pass
+		wpt_value = test_token
 		#wpt_value = "97831e9a87b1ad0c5b0a6b2c9025ba77bd771217a8"
+	print("!!!!!!")
+	print(wpt_value)
 	self.x_flow("identify",  {"token": wpt_value}, _on_identify_callback)	
 
 
@@ -144,8 +146,9 @@ func x_flow(flowname: String, params = {}, callback: Callable = self._on_request
 	
 	if ISDEV:
 		mainurl = "http://127.0.0.1:5000/?action=apiworld"
-		pass
+		#pass
 
+	
 	
 	var req = HTTPRequest.new()
 	add_child(req)

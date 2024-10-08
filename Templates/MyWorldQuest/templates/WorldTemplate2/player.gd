@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var username: String = ""
 #@export var id: int = 100
 #@export var title: String = ""
-@export var speed: float = 500
+@export var speed: float = 900
 @export var accel: float = 10
 
 signal hit
@@ -27,7 +27,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if true: #is_current_player:
+	#if true: #is_current_player:
+	if is_current_player:
 		var motion = Vector2()
 		velocity = Vector2.ZERO
 		
@@ -57,6 +58,10 @@ func _process(delta):
 		
 	pass
 
+
+func set_data(rdata: Dictionary) -> void:
+	$LabelPlayerUsername.text = rdata.get("username", "??")
+	pass
 
 
 

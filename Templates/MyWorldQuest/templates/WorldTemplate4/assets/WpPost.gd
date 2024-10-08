@@ -17,6 +17,8 @@ func set_data(post_data: Dictionary) -> void:
 	var tags: Array = post_data.get("tags", [])
 	var job_tags: Array = []
 
+	#var 
+
 	for tag in tags:
 		if str(tag).begins_with("tag-job_"):
 			job_tags.append(tag.replace("tag-job_", ""))

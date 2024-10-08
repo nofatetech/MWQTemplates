@@ -15,7 +15,7 @@ size_flags_vertical = 3
 script = ExtResource("1_6b05p")
 title_label = NodePath("Node2D/TitleLabel")
 content_label = NodePath("Control/ColorRect/VBoxContainer2/ContentLabel")
-summary_label = NodePath("Control/ColorRect/VBoxContainer2/SummaryLabel")
+summary_label = NodePath("Node2D/SummaryLabel")
 tags_label = NodePath("Node2D/TagsRichTextLabel")
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -47,6 +47,34 @@ theme_override_font_sizes/normal_font_size = 33
 bbcode_enabled = true
 text = "LOREM IPSUM"
 
+[node name="SummaryLabel" type="Label" parent="Node2D"]
+custom_minimum_size = Vector2(777, 111)
+offset_top = 194.0
+offset_right = 777.0
+offset_bottom = 305.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "LOREM IPSUM"
+
+[node name="GridContainer" type="GridContainer" parent="Node2D"]
+offset_left = 7.0
+offset_top = 278.0
+offset_right = 676.0
+offset_bottom = 529.0
+columns = 7
+
+[node name="Label" type="Label" parent="Node2D/GridContainer"]
+layout_mode = 2
+text = "tag1"
+
+[node name="Label2" type="Label" parent="Node2D/GridContainer"]
+layout_mode = 2
+text = "tag1"
+
+[node name="Label3" type="Label" parent="Node2D/GridContainer"]
+layout_mode = 2
+text = "tag1"
+
 [node name="Control" type="Control" parent="."]
 visible = false
 layout_mode = 3
@@ -66,6 +94,7 @@ grow_vertical = 2
 layout_mode = 2
 offset_right = 81.0
 offset_bottom = 54.0
+grow_horizontal = 2
 
 [node name="SummaryLabel" type="Label" parent="Control/ColorRect/VBoxContainer2"]
 layout_mode = 2
@@ -77,6 +106,7 @@ text = "CONTENT"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 visible = false
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -84,6 +114,7 @@ offset_bottom = 40.0
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = -177.0
 offset_top = 2.0
 offset_right = -20.0
