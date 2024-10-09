@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqjrpo5bx4aet"]
+[gd_scene load_steps=10 format=3 uid="uid://dqjrpo5bx4aet"]
 
 [ext_resource type="Script" path="res://templates/WorldTemplate4/WorldTemplate4.gd" id="1_gh1g5"]
 [ext_resource type="PackedScene" uid="uid://dgoigr2yals60" path="res://templates/WorldTemplate4/assets/WpPost.tscn" id="2_db56b"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dl820ctf1il65" path="res://templates/WorldTemplate4/assets/FilterObject.tscn" id="7_anpn1"]
 [ext_resource type="Script" path="res://templates/WorldTemplate4/FilterGrid.gd" id="7_gi84d"]
 [ext_resource type="PackedScene" uid="uid://djr0gr5mo5ttl" path="res://templates/WorldTemplate4/Player.tscn" id="8_ownt6"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="9_pedkm"]
 
 [node name="WorldTemplate4" type="Node2D" node_paths=PackedStringArray("wp_post_parent_node", "dynamyc_node_camera2d", "FiltersNode2d")]
 script = ExtResource("1_gh1g5")
@@ -66,6 +67,10 @@ columns = 10
 script = ExtResource("7_gi84d")
 FilterObject = ExtResource("7_anpn1")
 
+[node name="PlayersNode" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ZOOMOUT" type="Button" parent="CanvasLayer"]
@@ -92,9 +97,15 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 49
 text = "+"
 
-[node name="PlayersNode" type="Node2D" parent="."]
-
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Virtual Joystick" parent="CanvasLayer" instance=ExtResource("9_pedkm")]
+offset_left = 159.0
+offset_top = -300.0
+offset_right = 459.0
+offset_bottom = 0.0
+action_left = "left"
+action_right = "right"
+action_up = "up"
+action_down = "down"
 
 [connection signal="button_down" from="CanvasLayer/ZOOMOUT" to="." method="_on_zoomout_button_down"]
 [connection signal="button_down" from="CanvasLayer/ZOOMIN" to="." method="_on_zoomin_button_down"]

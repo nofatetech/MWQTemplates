@@ -8,23 +8,36 @@ script = ExtResource("1_ny4c1")
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_font_sizes/font_size = 33
 text = "MyWorld Banking"
 
 [node name="Label2" type="Label" parent="."]
-offset_top = 38.0
-offset_right = 137.0
-offset_bottom = 61.0
-text = "Slogan"
+offset_left = 1.0
+offset_top = 41.0
+offset_right = 402.0
+offset_bottom = 64.0
+text = "Money and focus are tools to do the important stuff"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button3" type="Button" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 38.0
+offset_top = -54.0
+offset_right = 170.0
+offset_bottom = -23.0
+grow_vertical = 0
+text = "My Journey"
 
 [node name="Button" type="Button" parent="CanvasLayer"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 24.0
+offset_left = 360.0
 offset_top = -54.0
-offset_right = 80.0
+offset_right = 484.0
 offset_bottom = -23.0
 grow_vertical = 0
 text = "My Profile"
@@ -33,46 +46,39 @@ text = "My Profile"
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 161.0
+offset_left = 199.0
 offset_top = -54.0
-offset_right = 247.0
+offset_right = 343.0
 offset_bottom = -23.0
 grow_vertical = 0
 text = "My Budget/Plan"
-
-[node name="Button3" type="Button" parent="CanvasLayer"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 336.0
-offset_top = -54.0
-offset_right = 468.0
-offset_bottom = -23.0
-grow_vertical = 0
-text = "My Journey"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 47.0
-offset_top = -503.0
-offset_right = 403.0
+offset_top = -610.0
+offset_right = 451.0
 offset_bottom = -84.0
 grow_vertical = 0
-text = "- PROFILE / SETTINGS
--- Roles (worker, stay at home parent, dad/mom, daughter, etc)
--- Health, Work, Aspirations, Aptitude
+text = "- JOURNEY (Homepage)
+-- An interactive timeline of events, actions, suggestions, etc.
+-- My professional network
+-- loyalty program, gamification
+-- investments
+-- calendar, events, activities suggestions
+-- AI suggestions
 
 - BUDGET / PLAN
--- bill payments, transfers
-
-- JOURNEY
--- network
--- loyalty, gamification
--- investments
+-- automated payments, buys, transfers
 -- wishlists
--- calendar, activities suggestions
+-- My Products / Stores
+-- AI suggestions
 
-open protocol api
+- PROFILE / SETTINGS
+-- My Roles (working parent, student, stay at home parent, etc)
+-- Health, Work, Aspirations, Aptitude, Skills, Psych
+-- Constant Feedback
+-- Connections with other APIs and data sources.
 "

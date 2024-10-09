@@ -11,7 +11,6 @@ size = Vector2(116, 112)
 shader = ExtResource("2_5vd5a")
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(288, 267)
 collision_layer = 2
 script = ExtResource("1_m326o")
 
@@ -31,20 +30,20 @@ texture = ExtResource("3_r6hm7")
 
 [node name="LabelPlayerUsername" type="Label" parent="."]
 unique_name_in_owner = true
-offset_left = -54.0
-offset_top = 66.0
-offset_right = -14.0
-offset_bottom = 89.0
+offset_left = -145.0
+offset_top = 69.0
+offset_right = 155.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color(0.574123, 0.725294, 0.243696, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
 theme_override_font_sizes/font_size = 33
-text = "who am I??"
-
-[node name="Camera2D" type="Camera2D" parent="."]
-unique_name_in_owner = true
-visible = false
-position = Vector2(-1, -1)
-zoom = Vector2(0.5, 0.5)
+text = "USERNAMENOTSET"
+horizontal_alignment = 1
 
 [node name="LEFT" type="Button" parent="."]
+visible = false
 offset_left = -235.0
 offset_top = -38.0
 offset_right = -110.0
@@ -53,6 +52,7 @@ theme_override_font_sizes/font_size = 0
 text = "LEFT"
 
 [node name="RIGHT" type="Button" parent="."]
+visible = false
 offset_left = 109.0
 offset_top = -45.0
 offset_right = 225.0
@@ -61,6 +61,7 @@ theme_override_font_sizes/font_size = 0
 text = "RIGHT"
 
 [node name="UP" type="Button" parent="."]
+visible = false
 offset_left = -71.0
 offset_top = -198.0
 offset_right = 45.0
@@ -69,6 +70,7 @@ theme_override_font_sizes/font_size = 0
 text = "UP"
 
 [node name="DOWN" type="Button" parent="."]
+visible = false
 offset_left = -51.0
 offset_top = 123.0
 offset_right = 65.0

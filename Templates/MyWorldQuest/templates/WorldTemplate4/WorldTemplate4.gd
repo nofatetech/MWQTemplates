@@ -19,7 +19,7 @@ var xcurrentplayer: Dictionary = {}
 @export var scene_instance_player: PackedScene
 
 
-# List of filters with emojis as titles
+# List of filters with emojis
 var filter_titles = [
 	{"emoji": "🤓", "title":"Engineer"},
 	{"emoji": "💼", "title":"Executive"},
@@ -126,10 +126,11 @@ var filter_titles = [
 
 func _ready() -> void:
 	# Start by loading the first page of posts
-	#load_posts(current_page)
+	load_posts(current_page)
+#	# Identify with MWQ
 	$MWQ.x_identify()
 	
-	# Create filter objects and add to the grid
+	# Create filter objects
 	var ii = 0
 	for title in filter_titles:
 		# Instantiate the custom FilterObject
@@ -139,15 +140,7 @@ func _ready() -> void:
 		FiltersNode2d.add_child(filter_obj)
 		ii += 1
 
-	
-	pass
-
 func mwq_identify_receive_data(data):
-	print("mwq_identify_receive_data")
-	#print(data.get("all_players_here"))
-	
-	
-	
 	xcurrentplayer = data.get("player", {})
 	var all_players_here = data.get("all_players_here", [])
 	var ii = 0
@@ -159,27 +152,21 @@ func mwq_identify_receive_data(data):
 func create_instance_player(titem: Dictionary, idx: int):
 	var tinstance = scene_instance_player.instantiate()
 	tinstance.set_data(titem)
-	$PlayersNode.add_child(tinstance)
-	#var whoami = titem.get("whoami", null)
-	#print("whoami")
-	#print(whoami)
 	if self.xcurrentplayer and self.xcurrentplayer.get("username", "") == titem.username:
 		print("ITS ME! ", self.xcurrentplayer.username)
 		tinstance.is_current_player = true
+		dynamyc_node_camera2d.reparent(tinstance)
 		#tinstance.hit.connect(my_player_hit)
 		#tinstance.leave.connect(my_player_leave)
-#
-		##tinstance.name
-		dynamyc_node_camera2d.reparent(tinstance)
-		print("CAMERA MOVW")
 		pass
+	tinstance.position = Vector2(titem.get("pos_x", 10 + (idx * 130)), titem.get("pos_y", 10 + (idx * 130)))
+	$PlayersNode.add_child(tinstance)
 	#tinstance.title = titem.get("title", "??")
 	##tinstance.title = titem.get("title", {}).get("rendered", "Unknown title")
 	##tinstance.position = Vector2(titem.get("x", 0), titem.get("y", 0))
 	#tinstance.id = titem.get("id", 0)
 	#tinstance.position = Vector2(100, 100 + (idx * 133))
 	#tinstance.position = Vector2(10 + (idx * 130), 10 + (idx * 130))
-	tinstance.position = Vector2(titem.get("pos_x", 10 + (idx * 130)), titem.get("pos_y", 10 + (idx * 130)))
 	#tinstance.redraw()
 	#print("item id: ", tinstance.id)
 	
@@ -291,7 +278,9 @@ func _on_load_posts_request_completed(result: int, response_code: int, headers: 
 
 
 func _on_zoomout_button_down() -> void:
+	print("zoom out!!1 ", dynamyc_node_camera2d.zoom)
 	dynamyc_node_camera2d.zoom = dynamyc_node_camera2d.zoom * 0.9
+	print("zoom out!!2 ", dynamyc_node_camera2d.zoom)
 
 
 func _on_zoomin_button_down() -> void:

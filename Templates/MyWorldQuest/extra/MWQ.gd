@@ -126,7 +126,16 @@ func x_identify():
 	print(wpt_value)
 	self.x_flow("identify",  {"token": wpt_value}, _on_identify_callback)	
 
-
+func x_player_update():
+	var wpt_value = JavaScriptBridge.eval("new URLSearchParams(window.location.search).get('wpt')")
+	if ISDEV:
+		#pass
+		wpt_value = test_token
+		#wpt_value = "97831e9a87b1ad0c5b0a6b2c9025ba77bd771217a8"
+	print("!!!!!!")
+	print(wpt_value)
+	self.x_flow("player_update",  {"token": wpt_value, "position": Vector3(0, 0, 0)}, _on_identify_callback)	
+	pass
 
 
 

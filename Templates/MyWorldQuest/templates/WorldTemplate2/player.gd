@@ -51,6 +51,7 @@ func _process(delta):
 			print("I collided with ", collision.get_collider().name)
 		
 		#var direction: Vector2 = Input.get_vector("left", "right", "up", "down")
+		#motion = Input.get_vector("left", "right", "up", "down")
 		#velocity.x = move_toward(velocity.x, speed * direction.x, accel)
 		#velocity.y = move_toward(velocity.y, speed * direction.y, accel)
 		#move_and_slide()
