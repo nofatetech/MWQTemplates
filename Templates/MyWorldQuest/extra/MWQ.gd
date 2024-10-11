@@ -115,7 +115,7 @@ func _on_identify_callback(result, response_code, headers, body):
 			pass
 
 
-func x_identify():
+func x_identify(rdata: Dictionary):
 	# Extract the 'param' query parameter from the URL
 	var wpt_value = JavaScriptBridge.eval("new URLSearchParams(window.location.search).get('wpt')")
 	if ISDEV:
@@ -123,8 +123,9 @@ func x_identify():
 		wpt_value = test_token
 		#wpt_value = "97831e9a87b1ad0c5b0a6b2c9025ba77bd771217a8"
 	print("!!!!!!")
-	print(wpt_value)
-	self.x_flow("identify",  {"token": wpt_value}, _on_identify_callback)	
+	var tdata := {"token": wpt_value, "position": str( rdata["position"] )};
+	print(tdata)
+	self.x_flow("identify",  tdata, _on_identify_callback)	
 
 func x_player_update():
 	var wpt_value = JavaScriptBridge.eval("new URLSearchParams(window.location.search).get('wpt')")

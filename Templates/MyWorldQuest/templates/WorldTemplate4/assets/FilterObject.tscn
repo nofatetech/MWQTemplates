@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dl820ctf1il65"]
+[gd_scene load_steps=5 format=3 uid="uid://dl820ctf1il65"]
 
 [ext_resource type="Script" path="res://templates/WorldTemplate4/FilterObject.gd" id="1_k6cpr"]
 [ext_resource type="FontFile" uid="uid://cu8lb6tmnrvy" path="res://templates/WorldTemplate4/assets/SpecialElite-Regular.ttf" id="2_mgo12"]
+[ext_resource type="Texture2D" uid="uid://dbijln27tci8m" path="res://icon.svg" id="3_02vcu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6yaal"]
 size = Vector2(3775, 203)
@@ -11,6 +12,27 @@ script = ExtResource("1_k6cpr")
 label = NodePath("Label2")
 shadow_label = NodePath("Label3")
 emoji_label = NodePath("EmojiLabel")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -242.0
+offset_top = -102.0
+offset_right = 691.0
+offset_bottom = 1107.0
+color = Color(0, 0, 0, 0.478431)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 690.0
+offset_top = -102.0
+offset_right = 769.0
+offset_bottom = 1107.0
+color = Color(0.572988, 0.572988, 0.572988, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = -233.0
+offset_top = 1106.0
+offset_right = 776.0
+offset_bottom = 1159.0
+color = Color(0.572988, 0.572988, 0.572988, 1)
 
 [node name="JobsParent" type="Node2D" parent="."]
 
@@ -44,31 +66,40 @@ position = Vector2(1683.5, 7.5)
 shape = SubResource("RectangleShape2D_6yaal")
 
 [node name="EmojiLabel" type="Label" parent="."]
-offset_left = -196.0
-offset_top = -149.0
-offset_right = -30.0
-offset_bottom = 185.0
+offset_left = -312.0
+offset_top = -186.0
+offset_right = -16.0
+offset_bottom = 236.0
 theme_override_fonts/font = ExtResource("2_mgo12")
 theme_override_font_sizes/font_size = 333
 text = "?"
-horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="."]
-offset_left = -3.0
-offset_top = 7.0
-offset_right = 151.0
-offset_bottom = 50.0
-theme_override_colors/font_color = Color(0, 0, 0, 0.717647)
+[node name="EmojiLabel2" type="Label" parent="."]
+offset_left = -199.0
+offset_top = 213.0
+offset_right = -93.0
+offset_bottom = 313.0
 theme_override_fonts/font = ExtResource("2_mgo12")
 theme_override_font_sizes/font_size = 77
+text = "📌"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = -84.0
+offset_top = 100.0
+offset_right = 198.0
+offset_bottom = 178.0
+theme_override_colors/font_color = Color(0, 0, 0, 0.717647)
+theme_override_fonts/font = ExtResource("2_mgo12")
+theme_override_font_sizes/font_size = 91
 text = "filter?"
 
 [node name="Label2" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -81.0
+offset_top = 93.0
+offset_right = 201.0
+offset_bottom = 171.0
 theme_override_fonts/font = ExtResource("2_mgo12")
-theme_override_font_sizes/font_size = 77
+theme_override_font_sizes/font_size = 91
 text = "filter?"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -99,3 +130,93 @@ offset_top = 8.0
 offset_right = -143.0
 offset_bottom = 54.0
 text = "GO"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 15.0
+offset_top = 272.0
+offset_right = 279.0
+offset_bottom = 467.0
+theme_override_font_sizes/font_size = 33
+text = "LEARN THIS!"
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 325.0
+offset_top = 272.0
+offset_right = 648.0
+offset_bottom = 475.0
+theme_override_font_sizes/font_size = 33
+text = "TEACH & SHARE!"
+
+[node name="Button4" type="Button" parent="."]
+offset_left = 74.0
+offset_top = 505.0
+offset_right = 292.0
+offset_bottom = 575.0
+theme_override_font_sizes/font_size = 33
+text = "JUNIOR"
+
+[node name="Button7" type="Button" parent="."]
+offset_left = 72.0
+offset_top = 587.0
+offset_right = 284.0
+offset_bottom = 658.0
+theme_override_font_sizes/font_size = 33
+text = "MID LEVEL"
+
+[node name="Button8" type="Button" parent="."]
+offset_left = 90.0
+offset_top = 683.0
+offset_right = 294.0
+offset_bottom = 752.0
+theme_override_font_sizes/font_size = 33
+text = "SENIOR"
+
+[node name="Label" type="Label" parent="Button8"]
+layout_mode = 0
+offset_left = -54.0
+offset_top = 115.0
+offset_right = 133.0
+offset_bottom = 171.0
+theme_override_font_sizes/font_size = 44
+text = "AMBASSADORS:"
+
+[node name="Button5" type="Button" parent="."]
+offset_left = 312.0
+offset_top = 502.0
+offset_right = 580.0
+offset_bottom = 573.0
+theme_override_font_sizes/font_size = 33
+text = "INTERNSHIPS"
+
+[node name="Button6" type="Button" parent="."]
+offset_left = 307.0
+offset_top = 595.0
+offset_right = 575.0
+offset_bottom = 666.0
+theme_override_font_sizes/font_size = 33
+text = "MENTORSHIPS"
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(-106, 930.5)
+scale = Vector2(0.679688, 0.679688)
+texture = ExtResource("3_02vcu")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(9.99999, 930.5)
+scale = Vector2(0.679688, 0.679688)
+texture = ExtResource("3_02vcu")
+
+[node name="Icon3" type="Sprite2D" parent="."]
+position = Vector2(131, 930.5)
+scale = Vector2(0.679688, 0.679688)
+texture = ExtResource("3_02vcu")
+
+[node name="Icon4" type="Sprite2D" parent="."]
+position = Vector2(244.5, 930.5)
+scale = Vector2(0.679688, 0.679688)
+texture = ExtResource("3_02vcu")
+
+[node name="Icon5" type="Sprite2D" parent="."]
+position = Vector2(360.5, 930.5)
+scale = Vector2(0.679688, 0.679688)
+texture = ExtResource("3_02vcu")

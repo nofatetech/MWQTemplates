@@ -128,7 +128,7 @@ func _ready() -> void:
 	# Start by loading the first page of posts
 	load_posts(current_page)
 #	# Identify with MWQ
-	$MWQ.x_identify()
+	$MWQ.x_identify({"position": Vector3(7,7,7)})
 	
 	# Create filter objects
 	var ii = 0
@@ -136,46 +136,127 @@ func _ready() -> void:
 		# Instantiate the custom FilterObject
 		var filter_obj = FilterObject.instantiate()
 		filter_obj.setdata(title) # Set the title for the filter
-		filter_obj.position = Vector2(0, 0 + (333 * ii))
+		
+		# Calculate row and column for a grid layout (10 per row)
+		var column = ii % 10  # Modulus to get the column (0-9)
+		var row = ii / 10  # Integer division to get the row
+		
+		# Set the position based on column and row
+		filter_obj.position = Vector2(1000 * column, 1333 * row)
+		
+		# Add the filter object to the parent node
 		FiltersNode2d.add_child(filter_obj)
+		
+		# Increment the counter
 		ii += 1
+
+	# Create a Timer node if it's not added in the scene
+	var timer = Timer.new()
+	timer.wait_time = 3.0  # Set the timer interval to 3 seconds
+	timer.autostart = true  # Start the timer automatically
+	timer.one_shot = false  # Make sure it repeats
+	add_child(timer)  # Add the timer to the scene
+
+	# Connect the timeout signal to a custom function
+	timer.timeout.connect(cronnn)
+
+# Function that will be called every 3 seconds
+func cronnn():
+	print("This runs every 3 seconds")
+	print("cronnn")
+	#$MWQ.x_identify({"position": Vector3(7,7,7)})
+	$MWQ.x_identify({"position": xcurrentplayer_node.position})
+	pass
+
+
 
 func mwq_identify_receive_data(data):
 	xcurrentplayer = data.get("player", {})
 	var all_players_here = data.get("all_players_here", [])
+	#var ii = 0
+	#for player in all_players_here:
+		#ii = ii + 1
+		#if $PlayersNode.node_exists("player_" + player.get("username")):
+			#playerobj.position = position_from_string(player.get("position"))
+		#else:
+			#create_instance_player(player, ii, name="player_" + player.get("username"))
+	#pass
 	var ii = 0
 	for player in all_players_here:
-		ii = ii + 1
+		ii += 1  # Simplified increment
+		
 		create_instance_player(player, ii)
-	pass
+
+# Function to transform a string like "(7, 7, 7)" or "(17.1, 7.1)" into a Vector2 or Vector3
+# Function to transform a string into Vector2 or Vector3 based on 'vector' parameter
+func position_from_string(position_str: String, vector: int) -> Variant:
+	# Strip out parentheses and split by commas
+	var values = position_str.strip_edges().replace("(", "").replace(")", "").split(",")
+
+	# Convert values to floats
+	var x = values[0].to_float()
+	var y = values[1].to_float()
+
+	if vector == 2:
+		return Vector2(x, y)
+	elif vector == 3:
+		var z = values[2].to_float()
+		return Vector3(x, y, z)
+	
+	# Default return in case of an invalid vector value
+	push_error("Invalid vector size: " + str(vector))
+	return Vector2.ZERO
+
+
+
 
 func create_instance_player(titem: Dictionary, idx: int):
-	var tinstance = scene_instance_player.instantiate()
-	tinstance.set_data(titem)
-	if self.xcurrentplayer and self.xcurrentplayer.get("username", "") == titem.username:
-		print("ITS ME! ", self.xcurrentplayer.username)
-		tinstance.is_current_player = true
-		dynamyc_node_camera2d.reparent(tinstance)
-		#tinstance.hit.connect(my_player_hit)
-		#tinstance.leave.connect(my_player_leave)
-		pass
-	tinstance.position = Vector2(titem.get("pos_x", 10 + (idx * 130)), titem.get("pos_y", 10 + (idx * 130)))
-	$PlayersNode.add_child(tinstance)
-	#tinstance.title = titem.get("title", "??")
-	##tinstance.title = titem.get("title", {}).get("rendered", "Unknown title")
-	##tinstance.position = Vector2(titem.get("x", 0), titem.get("y", 0))
-	#tinstance.id = titem.get("id", 0)
-	#tinstance.position = Vector2(100, 100 + (idx * 133))
-	#tinstance.position = Vector2(10 + (idx * 130), 10 + (idx * 130))
-	#tinstance.redraw()
-	#print("item id: ", tinstance.id)
-	
-	#var image_path = titem.get("image", "")
-	#image_path = "res://icon.svg"
-	#if image_path != "":
-		#var texture = load(image_path)
-		##if texture:
-			##tinstance.titem_image = texture
+	var player_name = "player_" + str(titem.get("id"))
+	print(">>>> player_name ", player_name, titem)
+	var position_str = titem.get("position", null)
+	if null == position_str:
+		position_str = "(0,0,0)"
+	var tinstance = $PlayersNode.get_node(player_name)
+	if tinstance:
+		if titem.get("id") == xcurrentplayer.get("id"):
+			pass
+		else:
+			tinstance.position = position_from_string(position_str, 2)
+	else:
+		tinstance = scene_instance_player.instantiate()
+		tinstance.name = player_name
+		print("xxx3 ", tinstance.name)
+		tinstance.set_data(titem)
+		#tinstance.position = Vector2(titem.get("pos_x", 10 + (idx * 130)), titem.get("pos_y", 10 + (idx * 130)))
+		tinstance.position = position_from_string(position_str, 2)
+		$PlayersNode.add_child(tinstance)
+		#tinstance.title = titem.get("title", "??")
+		##tinstance.title = titem.get("title", {}).get("rendered", "Unknown title")
+		##tinstance.position = Vector2(titem.get("x", 0), titem.get("y", 0))
+		#tinstance.id = titem.get("id", 0)
+		#tinstance.position = Vector2(100, 100 + (idx * 133))
+		#tinstance.position = Vector2(10 + (idx * 130), 10 + (idx * 130))
+		#tinstance.redraw()
+		#print("item id: ", tinstance.id)
+		
+		#var image_path = titem.get("image", "")
+		#image_path = "res://icon.svg"
+		#if image_path != "":
+			#var texture = load(image_path)
+			##if texture:
+				##tinstance.titem_image = texture
+
+		if self.xcurrentplayer and self.xcurrentplayer.get("username", "") == titem.username:
+			xcurrentplayer_node = tinstance
+			print("ITS ME! ", self.xcurrentplayer.username)
+			tinstance.is_current_player = true
+			dynamyc_node_camera2d.reparent(tinstance)
+			#tinstance.hit.connect(my_player_hit)
+			#tinstance.leave.connect(my_player_leave)
+			pass
+
+
+
 	
 
 func my_player_hit(area: Area2D):

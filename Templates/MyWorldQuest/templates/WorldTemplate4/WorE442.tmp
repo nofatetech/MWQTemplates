@@ -132,21 +132,6 @@ offset_top = -267.0
 offset_right = 365.0
 offset_bottom = -35.0
 script = ExtResource("10_5fi1g")
-action_left = "left"
-action_right = "right"
-action_up = "up"
-action_down = "down"
-
-[node name="Button" type="Button" parent="CanvasLayer"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 378.0
-offset_top = -196.0
-offset_right = 506.0
-offset_bottom = -123.0
-grow_vertical = 0
-text = "Leave Pin 📌"
 
 [connection signal="button_down" from="CanvasLayer/ZOOMOUT" to="." method="_on_zoomout_button_down"]
 [connection signal="button_down" from="CanvasLayer/ZOOMIN" to="." method="_on_zoomin_button_down"]

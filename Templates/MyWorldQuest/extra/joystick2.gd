@@ -1,4 +1,4 @@
-class_name Joystick2
+class_name VirtualJoystick
 
 extends Control
 
@@ -79,7 +79,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
-		print("joystick input")
+		print("joystick input!!!")
 		if event.pressed:
 			if _is_point_inside_joystick_area(event.position) and _touch_index == -1:
 				if joystick_mode == Joystick_mode.DYNAMIC or joystick_mode == Joystick_mode.FOLLOWING or (joystick_mode == Joystick_mode.FIXED and _is_point_inside_base(event.position)):
