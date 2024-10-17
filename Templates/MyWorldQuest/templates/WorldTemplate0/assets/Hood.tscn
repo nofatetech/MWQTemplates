@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://caf0ucnwo38lm"]
+
+[ext_resource type="Script" path="res://templates/WorldTemplate0/assets/Hood.gd" id="1_klajt"]
+[ext_resource type="PackedScene" uid="uid://bxjjy61wh3sl6" path="res://templates/WorldTemplate0/assets/Suburb.tscn" id="2_b26b0"]
+[ext_resource type="FontFile" uid="uid://cu8lb6tmnrvy" path="res://templates/WorldTemplate4/assets/SpecialElite-Regular.ttf" id="3_74cov"]
+
+[node name="Hood" type="Node2D"]
+script = ExtResource("1_klajt")
+scene_instance_suburb = ExtResource("2_b26b0")
+
+[node name="LabelTitle" type="Label" parent="."]
+offset_top = 7.0
+offset_right = 49.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_74cov")
+theme_override_font_sizes/font_size = 777
+text = "HOOD"
+vertical_alignment = 2
+
+[node name="LabelTitle2" type="Label" parent="."]
+offset_left = -5425.0
+offset_top = 3453.0
+offset_right = -315.0
+offset_bottom = 4231.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.231373)
+theme_override_fonts/font = ExtResource("3_74cov")
+theme_override_font_sizes/font_size = 333
+text = "Ambassadors:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LabelTitle3" type="Label" parent="."]
+offset_left = -5425.0
+offset_top = 2470.0
+offset_right = -315.0
+offset_bottom = 3248.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.231373)
+theme_override_fonts/font = ExtResource("3_74cov")
+theme_override_font_sizes/font_size = 333
+text = "Stats:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LabelTitle4" type="Label" parent="."]
+offset_left = -9344.0
+offset_top = 939.0
+offset_right = -499.0
+offset_bottom = 2126.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.231373)
+theme_override_fonts/font = ExtResource("3_74cov")
+theme_override_font_sizes/font_size = 420
+text = "Lorm ipsum Despcriptino asd fklas hfklñsadj flkñasdj flk"
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="SuburbsNode" type="Node2D" parent="."]
+position = Vector2(262, 995)

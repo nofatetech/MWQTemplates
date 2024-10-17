@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://1b2vfcgxqmhd"]
+
+[ext_resource type="Script" path="res://extra/MWQ.gd" id="1_e1ixn"]
+[ext_resource type="Script" path="res://templates/WorldTemplate0/WorldTemplate0.gd" id="1_ffrht"]
+[ext_resource type="Script" path="res://extra/MWQ_Wordpress.gd" id="2_y54ns"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="4_l4dj6"]
+[ext_resource type="Script" path="res://extra/joystick2.gd" id="5_ak37m"]
+
+[node name="WorldTemplate0" type="Node2D"]
+script = ExtResource("1_ffrht")
+
+[node name="MWQ" type="Node" parent="." node_paths=PackedStringArray("node_connector")]
+script = ExtResource("1_e1ixn")
+test_token = "77e0ced56691ec4adb6be90d98472fd1f182677dc6"
+ISDEV = true
+node_connector = NodePath("")
+
+[node name="MWQ_Wordpress" type="Node" parent="MWQ"]
+script = ExtResource("2_y54ns")
+
+[node name="Hoods" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ZOOMOUT" type="Button" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = -138.0
+offset_right = 124.0
+offset_bottom = -51.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 49
+text = "-"
+
+[node name="ZOOMIN" type="Button" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = -241.0
+offset_right = 124.0
+offset_bottom = -154.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 49
+text = "+"
+
+[node name="Virtual Joystick" parent="CanvasLayer" instance=ExtResource("4_l4dj6")]
+offset_left = 133.0
+offset_top = -267.0
+offset_right = 365.0
+offset_bottom = -35.0
+script = ExtResource("5_ak37m")
+action_left = "left"
+action_right = "right"
+action_up = "up"
+action_down = "down"
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 378.0
+offset_top = -196.0
+offset_right = 506.0
+offset_bottom = -123.0
+grow_vertical = 0
+text = "Leave Pin 📌"

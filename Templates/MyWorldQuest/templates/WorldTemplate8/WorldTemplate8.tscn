@@ -1,0 +1,121 @@
+[gd_scene load_steps=5 format=3 uid="uid://dayfmkybn1k2n"]
+
+[ext_resource type="Script" path="res://extra/MWQ.gd" id="1_pecdh"]
+[ext_resource type="Script" path="res://extra/MWQ_Wordpress.gd" id="2_fo1ai"]
+[ext_resource type="Texture2D" uid="uid://bn4qs2813dkc6" path="res://templates/WorldTemplate8/assets/little-egret-5826070_1280.jpg" id="3_rpa65"]
+[ext_resource type="Texture2D" uid="uid://cf7knty846t82" path="res://templates/WorldTemplate8/assets/booth 1 (1).png" id="4_bwu65"]
+
+[node name="WorldTemplate8" type="Node2D"]
+
+[node name="MWQ" type="Node" parent="." node_paths=PackedStringArray("node_connector")]
+script = ExtResource("1_pecdh")
+test_token = "77e0ced56691ec4adb6be90d98472fd1f182677dc6"
+ISDEV = true
+node_connector = NodePath("")
+
+[node name="MWQ_Wordpress" type="Node" parent="MWQ"]
+script = ExtResource("2_fo1ai")
+
+[node name="GALLERY" type="Node2D" parent="."]
+
+[node name="Little-egret-58260701281" type="Sprite2D" parent="GALLERY"]
+modulate = Color(1, 1, 1, 0.270588)
+position = Vector2(148, 193)
+scale = Vector2(0.220398, 0.220399)
+texture = ExtResource("3_rpa65")
+
+[node name="Little-egret-58260701282" type="Sprite2D" parent="GALLERY"]
+modulate = Color(1, 1, 1, 0.270588)
+position = Vector2(233, 193)
+scale = Vector2(0.277257, 0.277257)
+texture = ExtResource("3_rpa65")
+
+[node name="Little-egret-58260701280" type="Sprite2D" parent="GALLERY"]
+position = Vector2(342, 190)
+scale = Vector2(0.323564, 0.323564)
+texture = ExtResource("3_rpa65")
+
+[node name="BOOTH" type="Node2D" parent="."]
+
+[node name="Little-egret-58260701280" type="Sprite2D" parent="BOOTH"]
+position = Vector2(314, 313)
+scale = Vector2(0.447831, 0.447831)
+texture = ExtResource("3_rpa65")
+
+[node name="Booth1(1)" type="Sprite2D" parent="BOOTH"]
+position = Vector2(300, 390)
+scale = Vector2(0.546667, 0.546667)
+texture = ExtResource("4_bwu65")
+
+[node name="Parallax2D" type="Parallax2D" parent="BOOTH"]
+visible = false
+
+[node name="Label" type="Label" parent="BOOTH"]
+offset_left = 611.0
+offset_top = 190.0
+offset_right = 694.0
+offset_bottom = 213.0
+text = "STYLE 1"
+
+[node name="Label2" type="Label" parent="BOOTH"]
+offset_left = 611.0
+offset_top = 288.0
+offset_right = 694.0
+offset_bottom = 311.0
+text = "STYLE 2"
+
+[node name="Label3" type="Label" parent="BOOTH"]
+offset_left = 611.0
+offset_top = 386.0
+offset_right = 694.0
+offset_bottom = 409.0
+text = "STYLE 2"
+
+[node name="Little-egret-58260701281" type="Sprite2D" parent="BOOTH"]
+position = Vector2(636, 159)
+scale = Vector2(0.0779601, 0.0779601)
+texture = ExtResource("3_rpa65")
+
+[node name="Little-egret-58260701282" type="Sprite2D" parent="BOOTH"]
+position = Vector2(636, 253)
+scale = Vector2(0.0779601, 0.0779601)
+texture = ExtResource("3_rpa65")
+
+[node name="Little-egret-58260701283" type="Sprite2D" parent="BOOTH"]
+position = Vector2(636, 354)
+scale = Vector2(0.0779601, 0.0779601)
+texture = ExtResource("3_rpa65")
+
+[node name="Button" type="Button" parent="BOOTH"]
+offset_left = 56.0
+offset_top = 673.0
+offset_right = 231.0
+offset_bottom = 749.0
+text = "SELECT PICTURE"
+
+[node name="Button3" type="Button" parent="BOOTH"]
+offset_left = 18.0
+offset_top = 593.0
+offset_right = 193.0
+offset_bottom = 654.0
+text = "< GALLERY"
+
+[node name="Button2" type="Button" parent="BOOTH"]
+offset_left = 499.0
+offset_top = 673.0
+offset_right = 646.0
+offset_bottom = 749.0
+text = "CREATE"
+
+[node name="OptionButton" type="OptionButton" parent="BOOTH"]
+offset_left = 282.0
+offset_top = 669.0
+offset_right = 450.0
+offset_bottom = 753.0
+theme_override_font_sizes/font_size = 33
+selected = 0
+item_count = 2
+popup/item_0/text = "Option1"
+popup/item_0/id = 1
+popup/item_1/text = "Option2"
+popup/item_1/id = 2

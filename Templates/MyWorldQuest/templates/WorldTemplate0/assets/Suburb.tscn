@@ -1,0 +1,175 @@
+[gd_scene load_steps=9 format=3 uid="uid://bxjjy61wh3sl6"]
+
+[ext_resource type="Script" path="res://templates/WorldTemplate0/assets/Suburb.gd" id="1_ph5ng"]
+[ext_resource type="PackedScene" uid="uid://b1f8xxonklqdh" path="res://templates/WorldTemplate4/assets/WorldMini.tscn" id="2_73jog"]
+[ext_resource type="FontFile" uid="uid://cu8lb6tmnrvy" path="res://templates/WorldTemplate4/assets/SpecialElite-Regular.ttf" id="2_lu3ud"]
+[ext_resource type="Texture2D" uid="uid://diwapsuggvg3e" path="res://templates/WorldTemplate2/assets/578102df-7188-48ad-988f-4978d112721f.webp" id="2_vs70h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dptx7"]
+size = Vector2(2993, 2987)
+
+[sub_resource type="Animation" id="Animation_xs84g"]
+resource_name = "background_react"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("ColorRect2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 0.0769465),
+"update": 0,
+"values": [Color(1, 1, 1, 0.301961), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BgImage:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.129412), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fqiq5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.0823529)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BgImage:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.129412)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3ycx8"]
+_data = {
+"RESET": SubResource("Animation_fqiq5"),
+"background_react": SubResource("Animation_xs84g")
+}
+
+[node name="Suburb" type="Node2D"]
+script = ExtResource("1_ph5ng")
+scene_instance_worldmini = ExtResource("2_73jog")
+
+[node name="BgImage" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.129412)
+
+[node name="578102Df-7188-48Ad-988f-4978d112721f" type="Sprite2D" parent="BgImage"]
+position = Vector2(1516, 1553)
+scale = Vector2(1.82212, 1.30035)
+texture = ExtResource("2_vs70h")
+
+[node name="Area2DSuburbBackground" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DSuburbBackground"]
+position = Vector2(1500, 1500)
+shape = SubResource("RectangleShape2D_dptx7")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.0823529)
+offset_right = 3000.0
+offset_bottom = 3000.0
+color = Color(1, 1, 1, 0.431373)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = 124.0
+offset_top = 721.0
+offset_right = 631.0
+offset_bottom = 1329.0
+color = Color(1, 1, 1, 0.752941)
+
+[node name="LabelTitle" type="Label" parent="."]
+offset_top = 246.0
+offset_right = 1502.0
+offset_bottom = 667.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.764706)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.815686)
+theme_override_constants/shadow_offset_x = 51
+theme_override_constants/shadow_offset_y = 43
+theme_override_constants/outline_size = 66
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("2_lu3ud")
+theme_override_font_sizes/font_size = 420
+text = "Suburb"
+
+[node name="LabelTotalWorlds" type="Label" parent="."]
+visible = false
+offset_left = 209.0
+offset_top = 875.0
+offset_right = 562.0
+offset_bottom = 1162.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 210
+text = "0"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3ycx8")
+}
+
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_left = 1890.0
+offset_top = 2247.0
+offset_right = 2869.0
+offset_bottom = 2823.0
+theme_override_fonts/font = ExtResource("2_lu3ud")
+theme_override_font_sizes/font_size = 222
+text = "ENTER"
+
+[node name="WorldsNode" type="Node2D" parent="."]
+position = Vector2(128, 848)
+
+[connection signal="area_entered" from="Area2DSuburbBackground" to="." method="_on_area_2d_suburb_background_area_entered"]
+[connection signal="area_exited" from="Area2DSuburbBackground" to="." method="_on_area_2d_suburb_background_area_exited"]
+[connection signal="body_entered" from="Area2DSuburbBackground" to="." method="_on_area_2d_suburb_background_body_entered"]

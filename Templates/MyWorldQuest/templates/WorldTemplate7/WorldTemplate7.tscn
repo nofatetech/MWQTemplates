@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://crhjetmhbvti2"]
+
+[ext_resource type="Script" path="res://templates/WorldTemplate2/player.gd" id="1_morqy"]
+[ext_resource type="Texture2D" uid="uid://cm3c1mbd6e0to" path="res://templates/WorldTemplate7/assets/gt sticker_2023_08_24T18_33_23.png" id="2_oq3ld"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dyj70"]
+radius = 88.5664
+
+[node name="WorldTemplate7" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_morqy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_dyj70")
+
+[node name="GtSticker20230824t183323" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.23125, 0.23125)
+texture = ExtResource("2_oq3ld")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 423.0
+offset_top = 80.0
+offset_right = 555.0
+offset_bottom = 103.0
+text = " nimation / game"

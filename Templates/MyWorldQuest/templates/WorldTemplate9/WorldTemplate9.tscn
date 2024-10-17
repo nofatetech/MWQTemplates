@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnr174mn1gvgy"]
+
+[ext_resource type="Texture2D" uid="uid://dibsxp8nuat21" path="res://templates/WorldTemplate9/assets/winamp41.jpg" id="1_thbgu"]
+
+[node name="WorldTemplate9" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Template9
+Music App
+
+Connect with your Spotify account."
+
+[node name="Winamp41" type="Sprite2D" parent="."]
+position = Vector2(342, 350)
+texture = ExtResource("1_thbgu")

@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dqjrpo5bx4aet"]
+[gd_scene load_steps=12 format=3 uid="uid://dqjrpo5bx4aet"]
 
 [ext_resource type="Script" path="res://templates/WorldTemplate4/WorldTemplate4.gd" id="1_gh1g5"]
 [ext_resource type="PackedScene" uid="uid://dgoigr2yals60" path="res://templates/WorldTemplate4/assets/WpPost.tscn" id="2_db56b"]
 [ext_resource type="Texture2D" uid="uid://diwapsuggvg3e" path="res://templates/WorldTemplate2/assets/578102df-7188-48ad-988f-4978d112721f.webp" id="3_kycuv"]
 [ext_resource type="Script" path="res://extra/MWQ.gd" id="3_l2eb0"]
 [ext_resource type="Script" path="res://extra/MWQ_Wordpress.gd" id="4_oj3fb"]
+[ext_resource type="PackedScene" uid="uid://caf0ucnwo38lm" path="res://templates/WorldTemplate0/assets/Hood.tscn" id="5_u8eao"]
 [ext_resource type="PackedScene" uid="uid://dl820ctf1il65" path="res://templates/WorldTemplate4/assets/FilterObject.tscn" id="7_anpn1"]
 [ext_resource type="Script" path="res://templates/WorldTemplate4/FilterGrid.gd" id="7_gi84d"]
 [ext_resource type="PackedScene" uid="uid://djr0gr5mo5ttl" path="res://templates/WorldTemplate4/Player.tscn" id="8_ownt6"]
@@ -22,6 +23,7 @@ dynamyc_node_camera2d = NodePath("Camera2D")
 FilterObject = ExtResource("7_anpn1")
 FiltersNode2d = NodePath("FiltersNode2D")
 scene_instance_player = ExtResource("8_ownt6")
+scene_instance_hood = ExtResource("5_u8eao")
 
 [node name="MWQ" type="Node" parent="." node_paths=PackedStringArray("node_connector")]
 script = ExtResource("3_l2eb0")
@@ -31,6 +33,10 @@ node_connector = NodePath("..")
 
 [node name="MWQ_Wordpress" type="Node" parent="MWQ"]
 script = ExtResource("4_oj3fb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
@@ -68,8 +74,6 @@ offset_right = 9707.0
 offset_bottom = 13283.0
 texture = ExtResource("3_kycuv")
 
-[node name="FiltersNode2D" type="Node2D" parent="."]
-
 [node name="Control" type="Control" parent="."]
 visible = false
 layout_mode = 3
@@ -95,6 +99,10 @@ offset_bottom = 1409.0
 columns = 10
 script = ExtResource("7_gi84d")
 FilterObject = ExtResource("7_anpn1")
+
+[node name="HoodsNode" type="Node2D" parent="."]
+
+[node name="FiltersNode2D" type="Node2D" parent="."]
 
 [node name="PlayersNode" type="Node2D" parent="."]
 

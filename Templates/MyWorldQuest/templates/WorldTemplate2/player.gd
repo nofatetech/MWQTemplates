@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 @export var is_current_player := false
 
 @export var username: String = ""
@@ -31,6 +33,12 @@ func _process(delta):
 	if is_current_player:
 		var motion = Vector2()
 		velocity = Vector2.ZERO
+		
+		#moves faster when zoomed out
+		var tcam: Camera2D = find_child("Camera2D")
+		if tcam:
+			speed = 900 * ( 1 / (tcam.zoom.x * 3) )
+			pass
 		
 		if Input.is_action_pressed("up"):
 			motion.y -= 1

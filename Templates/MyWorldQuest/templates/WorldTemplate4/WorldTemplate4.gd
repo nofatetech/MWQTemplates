@@ -17,6 +17,7 @@ var xcurrentplayer_node: Node
 var xcurrentplayer: Dictionary = {}
 
 @export var scene_instance_player: PackedScene
+@export var scene_instance_hood: PackedScene
 
 
 # List of filters with emojis
@@ -130,35 +131,37 @@ func _ready() -> void:
 #	# Identify with MWQ
 	$MWQ.x_identify({"position": Vector3(7,7,7)})
 	
-	# Create filter objects
+	# Create RemoteOK filter objects
 	var ii = 0
-	for title in filter_titles:
-		# Instantiate the custom FilterObject
-		var filter_obj = FilterObject.instantiate()
-		filter_obj.setdata(title) # Set the title for the filter
-		
-		# Calculate row and column for a grid layout (10 per row)
-		var column = ii % 10  # Modulus to get the column (0-9)
-		var row = ii / 10  # Integer division to get the row
-		
-		# Set the position based on column and row
-		filter_obj.position = Vector2(1000 * column, 1333 * row)
-		
-		# Add the filter object to the parent node
-		FiltersNode2d.add_child(filter_obj)
-		
-		# Increment the counter
-		ii += 1
+	if false:
+		for title in filter_titles:
+			# Instantiate the custom FilterObject
+			var filter_obj = FilterObject.instantiate()
+			filter_obj.setdata(title) # Set the title for the filter
+			
+			# Calculate row and column for a grid layout (10 per row)
+			var column = ii % 10  # Modulus to get the column (0-9)
+			var row = ii / 10  # Integer division to get the row
+			
+			# Set the position based on column and row
+			filter_obj.position = Vector2(1000 * column, 1333 * row)
+			
+			# Add the filter object to the parent node
+			FiltersNode2d.add_child(filter_obj)
+			
+			# Increment the counter
+			ii += 1
 
-	# Create a Timer node if it's not added in the scene
-	var timer = Timer.new()
-	timer.wait_time = 3.0  # Set the timer interval to 3 seconds
-	timer.autostart = true  # Start the timer automatically
-	timer.one_shot = false  # Make sure it repeats
-	add_child(timer)  # Add the timer to the scene
+	if false:
+		# Create a Timer node if it's not added in the scene
+		var timer = Timer.new()
+		timer.wait_time = 3.0  # Set the timer interval to 3 seconds
+		timer.autostart = true  # Start the timer automatically
+		timer.one_shot = false  # Make sure it repeats
+		add_child(timer)  # Add the timer to the scene
 
-	# Connect the timeout signal to a custom function
-	timer.timeout.connect(cronnn)
+		# Connect the timeout signal to a custom function
+		timer.timeout.connect(cronnn)
 
 # Function that will be called every 3 seconds
 func cronnn():
@@ -173,19 +176,17 @@ func cronnn():
 func mwq_identify_receive_data(data):
 	xcurrentplayer = data.get("player", {})
 	var all_players_here = data.get("all_players_here", [])
-	#var ii = 0
-	#for player in all_players_here:
-		#ii = ii + 1
-		#if $PlayersNode.node_exists("player_" + player.get("username")):
-			#playerobj.position = position_from_string(player.get("position"))
-		#else:
-			#create_instance_player(player, ii, name="player_" + player.get("username"))
-	#pass
+	var hoods = data.get("hoods", [])
 	var ii = 0
 	for player in all_players_here:
 		ii += 1  # Simplified increment
-		
 		create_instance_player(player, ii)
+
+	ii = 0
+	for hood in hoods:
+		ii += 1  # Simplified increment
+		create_instance_hood(hood, ii)
+
 
 # Function to transform a string like "(7, 7, 7)" or "(17.1, 7.1)" into a Vector2 or Vector3
 # Function to transform a string into Vector2 or Vector3 based on 'vector' parameter
@@ -209,10 +210,39 @@ func position_from_string(position_str: String, vector: int) -> Variant:
 
 
 
+func create_instance_hood(titem: Dictionary, idx: int):
+	var hood_name = "hood_" + str(titem.get("id"))
+	#print(">>>> hood_name ", hood_name, titem)
+	var position_str = titem.get("position", null)
+	
+	position_str = "(" + str((idx - 1) * 0) + ", " + str((idx - 1) * 4200) + ")"
+	
+	if null == position_str:
+		position_str = "(0,0,0)"
+	var tinstance = $PlayersNode.get_node(hood_name)
+	if tinstance:
+		if false: #titem.get("id") == xcurrenthood.get("id"):
+			pass
+		else:
+			tinstance.position = position_from_string(position_str, 2)
+	else:
+		tinstance = scene_instance_hood.instantiate()
+		tinstance.name = hood_name
+		#print("xxx3 ", tinstance.name)
+		tinstance.set_data(titem)
+		#tinstance.position = Vector2(titem.get("pos_x", 10 + (idx * 130)), titem.get("pos_y", 10 + (idx * 130)))
+		tinstance.position = position_from_string(position_str, 2)
+		$HoodsNode.add_child(tinstance)
+
+	pass
+
+
+
+
 
 func create_instance_player(titem: Dictionary, idx: int):
 	var player_name = "player_" + str(titem.get("id"))
-	print(">>>> player_name ", player_name, titem)
+	#print(">>>> player_name ", player_name, titem)
 	var position_str = titem.get("position", null)
 	if null == position_str:
 		position_str = "(0,0,0)"
@@ -225,7 +255,7 @@ func create_instance_player(titem: Dictionary, idx: int):
 	else:
 		tinstance = scene_instance_player.instantiate()
 		tinstance.name = player_name
-		print("xxx3 ", tinstance.name)
+		#print("xxx3 ", tinstance.name)
 		tinstance.set_data(titem)
 		#tinstance.position = Vector2(titem.get("pos_x", 10 + (idx * 130)), titem.get("pos_y", 10 + (idx * 130)))
 		tinstance.position = position_from_string(position_str, 2)
@@ -359,9 +389,7 @@ func _on_load_posts_request_completed(result: int, response_code: int, headers: 
 
 
 func _on_zoomout_button_down() -> void:
-	print("zoom out!!1 ", dynamyc_node_camera2d.zoom)
 	dynamyc_node_camera2d.zoom = dynamyc_node_camera2d.zoom * 0.9
-	print("zoom out!!2 ", dynamyc_node_camera2d.zoom)
 
 
 func _on_zoomin_button_down() -> void:

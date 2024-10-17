@@ -1,22 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://djr0gr5mo5ttl"]
+[gd_scene load_steps=7 format=3 uid="uid://djr0gr5mo5ttl"]
 
 [ext_resource type="Script" path="res://templates/WorldTemplate2/player.gd" id="1_m326o"]
 [ext_resource type="Shader" path="res://templates/WorldTemplate2/ShaderPlayerShadow.gdshader" id="2_5vd5a"]
 [ext_resource type="Texture2D" uid="uid://dbijln27tci8m" path="res://icon.svg" id="3_r6hm7"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_epqnr"]
-size = Vector2(116, 112)
+[ext_resource type="Texture2D" uid="uid://cm3c1mbd6e0to" path="res://templates/WorldTemplate7/assets/gt sticker_2023_08_24T18_33_23.png" id="4_hca3s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yb2l7"]
 shader = ExtResource("2_5vd5a")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epqnr"]
+size = Vector2(170, 158)
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_m326o")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-light_mask = 2
-shape = SubResource("RectangleShape2D_epqnr")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.713726)
@@ -27,6 +24,20 @@ texture = ExtResource("3_r6hm7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_r6hm7")
+
+[node name="GtSticker20230824t183323" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(3, 2)
+scale = Vector2(0.2825, 0.2825)
+texture = ExtResource("4_hca3s")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_epqnr")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_epqnr")
 
 [node name="LabelPlayerUsername" type="Label" parent="."]
 unique_name_in_owner = true
