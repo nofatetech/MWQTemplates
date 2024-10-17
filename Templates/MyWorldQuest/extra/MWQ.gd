@@ -34,7 +34,7 @@ func x_apiworld(data: Dictionary, world_player_token: String, callback: Callable
 	#url = mainurl
 	var headers = ["Content-Type: application/json", "X-worldplayertoken: " + world_player_token]
 	var body = data
-	print("!!!", data)
+	#print("!!!", data)
 	# Send the POST request
 	var error = http_request.request(mainurl, headers, HTTPClient.METHOD_POST, JSON.new().stringify(body))
 	
@@ -86,26 +86,26 @@ func x_change_page(page: String, target: Node) -> void:
 
 
 func _on_identify_callback(result, response_code, headers, body):
-	print("FLOW")
-	print(result)
-	print(response_code)
-	print(headers)
+	#print("FLOW")
+	#print(result)
+	#print(response_code)
+	#print(headers)
 	#print(body)
 	if response_code == 200:  # HTTP OK
-		print("FLOW2")
+		#print("FLOW2")
 		var json = JSON.new()
 		json.parse(body.get_string_from_utf8())
 		var response_data = json.get_data()
-		print("response_data")
-		print(response_data)
+		#print("response_data")
+		#print(response_data)
 
 		# Check if the parsing was successful
 		if response_data.status == "ok":
 			var data = response_data.get("data")
 			var player = data["player"]
 			current_player = player
-			print("player!")
-			print(player)
+			#print("player!")
+			#print(player)
 			node_connector.mwq_identify_receive_data(data)
 			
 		else:
@@ -122,9 +122,9 @@ func x_identify(rdata: Dictionary):
 		#pass
 		wpt_value = test_token
 		#wpt_value = "97831e9a87b1ad0c5b0a6b2c9025ba77bd771217a8"
-	print("!!!!!!")
+	#print("!!!!!!")
 	var tdata := {"token": wpt_value, "position": str( rdata["position"] )};
-	print(tdata)
+	#print(tdata)
 	self.x_flow("identify",  tdata, _on_identify_callback)	
 
 func x_player_update():
@@ -133,8 +133,8 @@ func x_player_update():
 		#pass
 		wpt_value = test_token
 		#wpt_value = "97831e9a87b1ad0c5b0a6b2c9025ba77bd771217a8"
-	print("!!!!!!")
-	print(wpt_value)
+	#print("!!!!!!")
+	#print(wpt_value)
 	self.x_flow("player_update",  {"token": wpt_value, "position": Vector3(0, 0, 0)}, _on_identify_callback)	
 	pass
 
@@ -168,10 +168,10 @@ func x_flow(flowname: String, params = {}, callback: Callable = self._on_request
 
 func _on_request_flow_completed_default(result, response_code, headers, body):
 	var json = JSON.parse_string(body.get_string_from_utf8())
-	print("-------")
-	print("_on_request_flow_completed_default")
-	print(json)
-	print("-------")
+	#print("-------")
+	#print("_on_request_flow_completed_default")
+	#print(json)
+	#print("-------")
 	pass
 
 

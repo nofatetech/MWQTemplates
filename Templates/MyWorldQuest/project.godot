@@ -51,7 +51,13 @@ down={
 
 pointing/emulate_touch_from_mouse=true
 
+[layer_names]
+
+2d_render/layer_1="ENVIRONMENT"
+2d_render/layer_2="PLAYERS"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.0885596, 0.0885601, 0.0885596, 1)
