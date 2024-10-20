@@ -127,7 +127,7 @@ var filter_titles = [
 
 func _ready() -> void:
 	# Start by loading the first page of posts
-	load_posts(current_page)
+	#load_posts(current_page)
 #	# Identify with MWQ
 	$MWQ.x_identify({"position": Vector3(7,7,7)})
 	

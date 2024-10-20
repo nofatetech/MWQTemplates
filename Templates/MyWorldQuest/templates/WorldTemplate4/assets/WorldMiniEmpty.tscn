@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dla726577b2jd"]
+
+[node name="WorldMiniEmpty" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 333.0
+offset_bottom = 333.0
+color = Color(1, 1, 1, 0.356863)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_right = 136.0
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "empty"

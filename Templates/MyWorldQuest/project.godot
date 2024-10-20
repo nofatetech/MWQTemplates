@@ -60,4 +60,4 @@ pointing/emulate_touch_from_mouse=true
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.0885596, 0.0885601, 0.0885596, 1)
+environment/defaults/default_clear_color=Color(0.847474, 0.847474, 0.847474, 1)

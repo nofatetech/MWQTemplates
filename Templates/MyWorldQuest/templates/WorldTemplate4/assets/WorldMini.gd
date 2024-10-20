@@ -4,13 +4,11 @@ class_name WorldMini
 
 var url :String = ""
 
+
 func set_data(rdata: Dictionary) -> void:
 	$LabelTitle.text = rdata.get("title", "??")
 	self.url = rdata.get("url", "")
 	pass
-
-
-
 
 
 # Called when the node enters the scene tree for the first time.

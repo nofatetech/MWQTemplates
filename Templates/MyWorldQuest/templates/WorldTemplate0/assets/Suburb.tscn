@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxjjy61wh3sl6"]
+[gd_scene load_steps=10 format=3 uid="uid://bxjjy61wh3sl6"]
 
 [ext_resource type="Script" path="res://templates/WorldTemplate0/assets/Suburb.gd" id="1_ph5ng"]
 [ext_resource type="PackedScene" uid="uid://b1f8xxonklqdh" path="res://templates/WorldTemplate4/assets/WorldMini.tscn" id="2_73jog"]
 [ext_resource type="FontFile" uid="uid://cu8lb6tmnrvy" path="res://templates/WorldTemplate4/assets/SpecialElite-Regular.ttf" id="2_lu3ud"]
 [ext_resource type="Texture2D" uid="uid://diwapsuggvg3e" path="res://templates/WorldTemplate2/assets/578102df-7188-48ad-988f-4978d112721f.webp" id="2_vs70h"]
+[ext_resource type="PackedScene" uid="uid://dla726577b2jd" path="res://templates/WorldTemplate4/assets/WorldMiniEmpty.tscn" id="3_lvtib"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dptx7"]
 size = Vector2(2993, 2987)
@@ -95,6 +96,7 @@ _data = {
 [node name="Suburb" type="Node2D"]
 script = ExtResource("1_ph5ng")
 scene_instance_worldmini = ExtResource("2_73jog")
+scene_instance_emptyworldmini = ExtResource("3_lvtib")
 
 [node name="BgImage" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0.129412)
@@ -105,7 +107,6 @@ scale = Vector2(1.82212, 1.30035)
 texture = ExtResource("2_vs70h")
 
 [node name="Area2DSuburbBackground" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DSuburbBackground"]
 position = Vector2(1500, 1500)
@@ -166,6 +167,9 @@ offset_bottom = 2823.0
 theme_override_fonts/font = ExtResource("2_lu3ud")
 theme_override_font_sizes/font_size = 222
 text = "ENTER"
+
+[node name="EmtiesNode2D" type="Node2D" parent="."]
+position = Vector2(211, 1435)
 
 [node name="WorldsNode" type="Node2D" parent="."]
 position = Vector2(128, 848)
